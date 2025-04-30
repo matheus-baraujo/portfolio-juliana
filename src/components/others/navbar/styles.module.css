@@ -1,0 +1,18 @@
+.navbar{
+  display: flex;
+  justify-content: center;
+  height: 100px;
+  background-color: var(--bg);
+}
+
+.menu{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 1250px;
+}
+
+.logo{
+  height: 70px;
+}
