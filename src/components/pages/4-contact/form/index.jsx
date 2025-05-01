@@ -3,20 +3,24 @@ import styles from './styles.module.css'
 
 const index = () => {
   return (
-    <form>
-      <div className="form-group">
-        <label htmlFor="name">Nome</label>
-        <input type="text" id="name" name="name" required />
+    <form className={styles.form}>
+      <div className={styles.formGroup}>
+        <label htmlFor="nome">Nome</label>
+        <input type="text" id="nome" name="nome" required />
       </div>
-      <div className="form-group">
+      <div className={styles.formGroup}>
         <label htmlFor="email">Email</label>
         <input type="email" id="email" name="email" required />
       </div>
-      <div className="form-group">
-        <label htmlFor="message">Mensagem</label>
-        <textarea id="message" name="message" required></textarea>
+      <div className={styles.formGroup}>
+        <label htmlFor="telefone">Telefone</label>
+        <input type="tel" id="telefone" name="telefone" required />
       </div>
-      <button type="submit">Enviar</button>
+      <div className={styles.formGroup}>
+        <label htmlFor="message">Mensagem</label>
+        <textarea id="message" name="message" rows={7} required></textarea>
+      </div>
+      <button>Enviar</button>
     </form>
   )
 }
