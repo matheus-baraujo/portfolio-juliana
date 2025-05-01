@@ -3,6 +3,7 @@
   justify-content: center;
   height: 100px;
   background-color: var(--bg);
+  border-bottom: 1px solid var(--highlight);
 }
 
 .menu{
@@ -15,4 +16,8 @@
 
 .logo{
   height: 70px;
+}
+
+.logo:hover{
+  cursor: pointer;
 }

@@ -1,0 +1,44 @@
+.container{
+  margin: 100px auto;
+  width: 1250px;
+}
+
+.cta{
+  color: var(--text);
+}
+
+.cta h2{
+  font-size: 24px;
+  font-family: var(--font-montserrat);
+  margin: 0;
+}
+
+.cta p{
+  font-size: 120px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.row{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 100px 0;
+}
+
+.col{
+  width: 365px;
+  font-family: var(--font-montserrat);
+  font-weight: 300;
+  color: var(--highlight);
+}
+
+.col h2{
+  font-size: 48px;
+  font-weight: 400;
+}
+
+.col p{
+  font-size: 24px;
+  margin: 0;
+}

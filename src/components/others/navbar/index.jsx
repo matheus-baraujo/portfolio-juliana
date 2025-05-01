@@ -2,32 +2,36 @@
 
 import React from 'react'
 import styles from './styles.module.css'
-import Button from './button'
-import Button2 from './button2'
 
-const index = () => {
 
-  const onClickHandle = () => {
-    window.location.href = '/servicos'
-  }
+import Button from '@/components/others/navbar/button'
+import Button2 from '@/components/others/navbar/button2'
 
+
+
+
+const redirect = (url) => {
+  window.location.href = '/'+url
+}
+
+
+const index = ({footer}) => {
 
   return (
     <div className={styles.navbar}>
 
       <div className={styles.menu}>
 
-        <img className={styles.logo} src="/logos/logoMenu.png" alt="logo" />
+        <img className={styles.logo} src="/logos/logoMenu.png" alt="logo" onClick={() => window.location.href = '/' }/>
 
-        <Button text={"Serviços"} onClickHandle={onClickHandle} />
-        <Button text={"Cases"} onClickHandle={onClickHandle} />
-        <Button text={"InCompany"} onClickHandle={onClickHandle} />
-        <Button text={"Contato"} onClickHandle={onClickHandle} />
+        <Button text={"Serviços"} onClickHandle={redirect} />
+        <Button text={"Cases"} onClickHandle={redirect} />
+        <Button text={"InCompany"} onClickHandle={redirect} />
+        <Button text={"Contato"} onClickHandle={redirect} />
 
-        <Button2 text={"Orçamento"} onClickHandle={onClickHandle}/>
+        <Button2 text={"Orçamento"} onClickHandle={redirect} footer={footer}/>
       </div>
 
-      
     </div>
   )
 }

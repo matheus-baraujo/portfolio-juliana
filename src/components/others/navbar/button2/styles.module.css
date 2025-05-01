@@ -10,16 +10,25 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  color: white;
 
-  background-color: var(--highlight) !important;
+  
 
   font-size: 18px;
   text-align: center;
   background: none;
   border: none;
   cursor: pointer;
-  font-family: var(--montserrat-font);
+  font-family: var(--font-montserrat);
+}
+
+.btnDefault{
+  color: white;
+  background-color: var(--highlight);
+}
+
+.btnFooter{
+  color: var(--text);
+  background-color: var(--bg);
 }
 
 .btn span {
@@ -31,9 +40,9 @@
 .btn span::before {
   content: '';
   position: absolute;
-  left: -120px;
+  left: -105px;
   bottom: -20px;
-  width: 360px;
+  width: 350px;
   height: 1px;
   background-color: var(--text);
   transition: transform 0.3s ease-in-out;
@@ -42,9 +51,9 @@
 .btn span::after {
   content: '';
   position: absolute;
-  left: -120px;
+  left: -105px;
   top: -20px;
-  width: 360px;
+  width: 350px;
   height: 1px;
   background-color: var(--text);
   transition: transform 0.3s ease-in-out;
@@ -76,4 +85,14 @@
 .btn:hover{
   scale: .95;
   opacity: .8;
+}
+
+.btnFooter:hover{
+  background-color: var(--highlight);
+  color: white;
+  opacity: 1;
+}
+
+.btnFooter:hover span::before, .btnFooter:hover span::after, .btnFooter:hover::before, .btnFooter:hover::after {
+  background-color: white;
 }
