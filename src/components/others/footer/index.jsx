@@ -31,7 +31,7 @@ const index = () => {
           :
           <div className={styles.cta}>
             <h2>Coloque sua marca em movimento</h2>
-            <p>vem co-criar com a ju!</p>
+            <p>VEM CO-CRIAR COM A JU!</p>
           </div>
       }
 
