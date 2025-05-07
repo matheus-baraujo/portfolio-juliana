@@ -1,0 +1,21 @@
+.container{
+  margin: 100px auto;
+  width: 1250px;
+}
+
+.cta{
+  color: var(--highlight);
+}
+
+.cta h2{
+  font-size: 64px;
+  font-weight: 400;
+  font-family: var(--font-montserrat);
+  margin: 0;
+}
+
+.cta p{
+  font-size: 24px;
+  font-family: var(--font-montserrat);
+  margin: 0;
+}

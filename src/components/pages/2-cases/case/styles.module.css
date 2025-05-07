@@ -1,0 +1,37 @@
+.case{
+  display: flex;
+  height: 523px;
+  flex-direction: row;
+  gap: 35px;
+  margin-top: 60px;
+}
+
+.case2{
+  display: flex;
+  height: 523px;
+  flex-direction: row-reverse;
+  gap: 35px;
+  margin-top: 60px;
+}
+
+.info{
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  color: var(--text);
+}
+
+.info h2{
+  font-size: 40px;
+  margin: 0;
+  font-weight: 400;
+  font-family: var(--font-montserrat);
+}
+
+.info p{
+  font-size: 24px;
+  margin: 0;
+  font-weight: 400;
+  font-family: var(--font-montserrat);
+}
+
