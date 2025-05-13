@@ -96,3 +96,48 @@
 .btnFooter:hover span::before, .btnFooter:hover span::after, .btnFooter:hover::before, .btnFooter:hover::after {
   background-color: white;
 }
+
+
+@media screen and (max-width: 768px) {
+  .btn {
+    font-size: 35px;
+    padding: 10px;
+    width: auto;
+    height: auto;
+  }
+
+  .btn span {
+    position: relative;
+    padding: 5px 20px;
+    display: inline-block;
+  }
+  
+  .btn::before, .btn::after {
+    top: 5%;
+    height: 90%;
+  }
+  
+  .btn span::before {
+    content: '';
+    position: absolute;
+    left: 0px;
+    bottom: 0px;
+    width: 100%;
+    height: 1px;
+    background-color: var(--text);
+    transform: scaleX(1.1);
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .btn span::after {
+    content: '';
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 1px;
+    background-color: var(--text);
+    transform: scaleX(1.1);
+    transition: transform 0.3s ease-in-out;
+  }
+}

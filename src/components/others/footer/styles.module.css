@@ -1,7 +1,7 @@
 .footer{
   display: flex;
   flex-direction: column;
-  height: 876px;
+  height: 1200px;
   padding: 52px 0px;
   background-color: var(--highlight);
   justify-content: space-between;
@@ -25,16 +25,80 @@
   width: 1250px;
 }
 
-.cta p{
-  font-size: 92px;
+.cta h2, .socials2 h2{
+  font-size: 80px;
   margin: 0;
   font-family: var(--font-black-mango);
 }
 
-.cta h2{
-  margin: 0;
-  font-weight: lighter;
+.msgButton{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
+
+.msgButton p{
+  font-size: 36px;
+  width: 615px;
+  font-weight: 300;
+  margin: 0;
+  font-family: var(--font-montserrat);
+}
+
+.msgButton button{
+  background-color: var(--bg);
+  color: var(--highlight);
+  border: none;
+  font-size: 28px;
+  font-family: var(--font-montserrat);
+  border-radius: 50%;
+  height: 210px;
+  width: 210px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+.msgButton button:hover{
+  background-color: var(--highlight);
+  color: var(--bg);
+  box-shadow: 0px 0px 20px white;
+}
+
+.socials2{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.socials2 .icons{
+  display: flex;
+  font-size: 50px;
+  flex-direction: row;
+  gap: 30px;
+}
+
+.top{
+  width: 180px;
+  height: 40px;
+  border: 1px solid white;
+  border-radius: 100px;
+  font-family: var(--font-montserrat);
+  font-size: 20px;
+  color: white;
+  background-color: var(--highlight);
+  transition: all 0.3s ease-in-out;
+}
+
+.top:hover{
+  background-color: white;
+  color: var(--highlight);
+  cursor: pointer;
+}
+
+
+
+
 
 
 .section{
@@ -42,7 +106,6 @@
   flex-direction: column;
   gap: 20px;
 }
-
 
 .socials{
   display: flex;
@@ -60,18 +123,17 @@
   gap: 20px;
 }
 
-.socials .icons a{
+.socials .icons a, .socials2 .icons a{
   color: white;
   height: fit-content;
   text-decoration: none;
   transition: all 0.3s ease-in-out;
 }
 
-.socials .icons a:hover{
+.socials .icons a:hover, .socials2 .icons a:hover{
   scale: 1.5;
   text-shadow: 1px 1px 20px white;
 }
-
 
 .info{
   display: flex;
@@ -97,6 +159,7 @@
   flex-direction: row;
   justify-content: space-between;
   width: 1250px;
+  margin-top: 90px;
 }
 
 .copyright p{
