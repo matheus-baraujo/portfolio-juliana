@@ -59,8 +59,6 @@ const index = () => {
 
             <button className={styles.top}>Voltar ao topo</button>
           </div>
-
-          
       }
 
       <div className={styles.section}>
@@ -70,6 +68,7 @@ const index = () => {
           <>
             <div className={styles.socials}>
               <div className={styles.info}>
+
                 <p>Onde me encontrar</p>
 
                 <div className={styles.icons}>
