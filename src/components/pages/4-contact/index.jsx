@@ -7,8 +7,9 @@ const index = () => {
     <div className={styles.container}>
       
       <div className={styles.cta}>
-        <h2>Coloque sua marca em movimento</h2>
-        <p>VEM CO-CRIAR COM A JU!</p>
+        <h2 className={styles.titleDesktop}>Coloque sua marca em movimento</h2>
+        <h2 className={styles.titleMobile}>Vídeos com estratégia, criatividade e velocidade </h2>
+        <p>Vem co-criar com a ju!</p>
       </div>
 
       <div className={styles.row}>

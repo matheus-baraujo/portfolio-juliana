@@ -44,3 +44,26 @@
   background-color: var(--highlight);
   scale: 1.05;
 }
+
+@media screen and (max-width: 768px) {
+
+  .form{
+    gap: 20px;
+  }
+
+  .formGroup{
+    font-size: 14px;
+    gap: 5px;
+  }
+
+  .formGroup input[type="text"], .formGroup input[type="email"], .formGroup input[type="tel"], .formGroup textarea{
+    font-size: 14px;
+  }
+  .form button{
+    font-size: 14px;
+    height: auto;
+    padding: 5px 0px;
+    border-radius: 54px;
+  }
+  
+}

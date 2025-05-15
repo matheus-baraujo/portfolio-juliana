@@ -1,10 +1,19 @@
 .container{
   margin: 100px auto;
-  width: 1250px;
+  max-width: 1250px;
+  width: 100%;
 }
 
 .cta{
   color: var(--text);
+}
+
+.titleDesktop{
+  display: block;
+}
+
+.titleMobila{
+  display: none;
 }
 
 .cta h2{
@@ -50,4 +59,48 @@
 
 .col2{
   width: 715px;
+}
+
+@media screen and (max-width: 768px) {
+  .container{
+    margin: 100px auto 50px;
+  }
+  .cta{
+    text-align: center;
+  }
+  .titleDesktop{
+    display: none;
+  }
+  .titleMobila{
+    display: block;
+  }
+  .cta h2{
+    font-size: 24px;
+    font-weight: 300;
+  }
+  .cta p{
+    font-size: 30px;
+  }
+  .row{
+    padding: 0px 20px;
+    margin-top: 10px;
+    flex-direction: column-reverse;
+    gap: 20px;
+  }
+
+  .col, .col2{
+    width: 100%;
+  }
+  .col h2{
+    font-size: 22px;
+  }
+  .col p{
+    font-size: 14px;
+    width: 185px;
+  }
+
+  .col2{
+    
+  }
+  
 }
