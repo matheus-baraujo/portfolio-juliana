@@ -19,14 +19,12 @@ const index = ({video}) => {
   };
 
   return (
-    <>
-      <div onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
-        <video ref={videoRef} className={styles.video} muted loop={true} >
-          <source src={video} type="video/webm" />
-          Your browser does not support the video tag.
-        </video>
-      </div>
-    </>
+    <div onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
+      <video ref={videoRef} className={styles.video} muted loop={true} >
+        <source src={video} type="video/webm" />
+        Your browser does not support the video tag.
+      </video>
+    </div>
   )
 }
 

@@ -1,21 +1,36 @@
 .container{
   margin: 100px auto;
-  width: 1250px;
+  max-width: 1250px;
+  width: 100%;
 }
 
 .cta{
-  color: var(--highlight);
+  color: var(--text);
 }
 
 .cta h2{
   font-size: 64px;
   font-weight: 400;
-  font-family: var(--font-montserrat);
+  font-family: var(--font-black-mango);
   margin: 0;
 }
 
 .cta p{
-  font-size: 24px;
-  font-family: var(--font-montserrat);
+  font-size: 36px;
+  font-family: var(--font-black-mango);
   margin: 0;
+}
+
+@media screen and (max-width: 768px) {
+  .container{
+    padding: 0px 20px;
+    margin: 100px auto 50px;
+  }
+  .cta h2{
+    font-size: 32px;
+  }
+  .cta p{
+    font-size: 16px;
+  }
+  
 }

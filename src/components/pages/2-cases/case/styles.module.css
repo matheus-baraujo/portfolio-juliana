@@ -18,14 +18,16 @@
   display: flex;
   flex-direction: column;
   gap: 20px;
-  color: var(--text);
+  
 }
 
 .info h2{
-  font-size: 40px;
+  font-size: 36px;
   margin: 0;
   font-weight: 400;
-  font-family: var(--font-montserrat);
+  line-height: 1.2;
+  font-family: var(--font-black-mango);
+  color: var(--text);
 }
 
 .info p{
@@ -33,5 +35,29 @@
   margin: 0;
   font-weight: 400;
   font-family: var(--font-montserrat);
+  color: var(--highlight);
 }
 
+@media screen and (max-width: 768px) {
+  .case, .case2{
+    gap: 20px;
+    height: 360px;
+    margin-top: 40px;
+  }
+  
+  .info{
+    width: 160px;
+  }
+
+  .info h2{
+    font-size: 18px;
+  }
+  .info p{
+    font-size: 14px;
+  }
+
+  .carousel{
+    width: 330px;
+  }
+  
+}
