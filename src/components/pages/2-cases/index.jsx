@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect, useRef } from 'react'
 import styles from './styles.module.css'
-import Case from './case/index.jsx'
+import Case from '@/components/others/case'
 
 const index = () => {
 
@@ -62,7 +62,7 @@ const index = () => {
       {
         cases.slice(0, visibleCases).map((item, index) => {
           return (
-            <Case key={index} projeto={item} direction={index%2 == 0 ? true : false} />
+            <Case key={index} projeto={item} direction={index%2 == 0 ? true : false} home={false}/>
           )
         })
       }

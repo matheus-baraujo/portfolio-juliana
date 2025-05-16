@@ -18,7 +18,6 @@
   display: flex;
   flex-direction: column;
   gap: 20px;
-  
 }
 
 .info h2{
@@ -38,6 +37,23 @@
   color: var(--highlight);
 }
 
+.infoHome h2{
+  font-size: 24px;
+  font-weight: 400;
+  margin: 0;
+  font-family: var(--font-montserrat);
+  color: var(--text);
+}
+
+.infoHome p{
+  font-size: 28px;
+  font-weight: bold;
+  margin: 0;
+  font-family: var(--font-black-mango);
+  color: var(--highlight);
+  white-space: pre-wrap;
+}
+
 @media screen and (max-width: 768px) {
   .case, .case2{
     gap: 20px;
@@ -46,7 +62,7 @@
   }
   
   .info{
-    width: 160px;
+    width: 170px;
   }
 
   .info h2{

@@ -1,0 +1,9 @@
+.container{
+  margin-bottom: 100px;
+}
+
+.title h2{
+  font-size: 48px;
+  font-family: var(--font-black-mango);
+  color: var(--text);
+}

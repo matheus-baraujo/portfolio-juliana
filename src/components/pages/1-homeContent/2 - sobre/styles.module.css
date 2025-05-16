@@ -1,0 +1,67 @@
+.container{
+  margin: 100px 0px;
+}
+
+.title{
+  display : flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 15px;
+
+  font-size: 48px;
+  font-weight: 400;
+  font-family: var(--font-black-mango);
+  color: var(--text);
+}
+
+.title h2{
+  margin: 0;
+}
+
+.subtitle{
+  font-size: 36px;
+  font-family: var(--font-black-mango);
+  color: var(--highlight);
+  margin: 0;
+}
+
+.content{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.col{
+  width: 580px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.col p{
+  font-size: 36px;
+  font-family: var(--font-montserrat);
+  color: var(--highlight);
+}
+
+.col h2{
+  font-size: 36px;
+  font-family: var(--font-black-mango);
+  color: var(--highlight);
+  font-weight: bold;
+}
+
+.imgContainer{
+  position: relative;
+}
+
+.logoSobre2{
+  position: absolute;
+  bottom: 50px;
+  left: -100px;
+  width: 170px;
+  height: 170px;
+  padding: 15px;
+  border-radius: 100px;
+  background-color: var(--highlight);
+}

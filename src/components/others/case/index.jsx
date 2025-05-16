@@ -11,15 +11,13 @@ import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 
 
-const index = ({projeto, direction}) => {
+const index = ({projeto, direction, home}) => {
 
   const [isClient, setIsClient] = useState(false);
 
   useEffect(() => {
     setIsClient(true);
   }, []);
-
-  
 
   const isMobile = useMediaQuery({ maxWidth: 768 });
 
@@ -41,7 +39,7 @@ const index = ({projeto, direction}) => {
   return (
     <div className={ direction ? styles.case : styles.case2}>
       
-      <div className={styles.info}>
+      <div className={ home ? styles.infoHome : styles.info}>
         <h2>{projeto?.[0]}</h2>
         <p>{projeto?.[1]}</p>
       </div>

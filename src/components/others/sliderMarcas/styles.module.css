@@ -1,0 +1,31 @@
+.carouselContainer {
+  overflow: hidden;
+  width: 100%;
+  margin: 80px 0px;
+}
+
+.carouselTrack {
+  display: flex;
+  width: max-content;
+  animation: scroll-left 20s linear infinite;
+}
+
+.carouselItem {
+  flex: none;
+  padding: 0 20px;
+}
+
+.carouselItem img {
+  height: 60px;
+  object-fit: contain;
+}
+
+/* Animação contínua */
+@keyframes scroll-left {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}

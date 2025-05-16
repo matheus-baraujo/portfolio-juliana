@@ -60,9 +60,8 @@
 }
 
 .msgButton button:hover{
-  background-color: var(--highlight);
-  color: var(--bg);
-  box-shadow: 0px 0px 20px white;
+  background-color: var(--accent);
+  color: white;
 }
 
 .socials2{

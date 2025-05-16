@@ -1,0 +1,61 @@
+.container{
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  position: relative;
+}
+
+.cta{
+  color: white;
+  position: absolute;
+  z-index: 2;
+  height: 100%;
+  width: 100%;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+
+.cta h2{
+  font-size: 52px;
+  font-weight: 400;
+  font-family: var(--font-black-mango);
+  
+  padding: 25px;
+  width: calc(25% - 50px);
+  height: calc(100% - 50px);
+  margin: 0;
+}
+
+.cta p{
+  font-size: 28px;
+  font-family: var(--font-montserrat);
+
+  padding: 25px;
+  width: calc(50% - 50px);
+  height: calc(100% - 50px);
+  margin: 0;
+}
+
+.filter{
+  height: 100%;
+  width: 100%;
+  background-color: var(--accent);
+  opacity: 75%;
+  position: absolute;
+  z-index: 1;
+}
+
+.videoContainer{
+  width: 25%;
+  height: 550px;
+  position: relative;
+}
+
+.videoContainer video{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
