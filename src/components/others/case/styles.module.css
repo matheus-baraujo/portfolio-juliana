@@ -58,7 +58,7 @@
   .case, .case2{
     gap: 20px;
     height: 360px;
-    margin-top: 40px;
+    margin-top: 20px;
   }
   
   .info{
@@ -76,4 +76,9 @@
     width: 330px;
   }
   
+
+  .infoHome h2, .infoHome p{
+    font-size: 14px;
+  }
+
 }

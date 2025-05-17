@@ -27,7 +27,7 @@ const Index = ({ footer }) => {
       <div className={styles.menu} ref={menuRef}>
         <img className={styles.logo} src="/logos/logoMenu.png" alt="logo" onClick={() => window.location.href = '/' }/>
 
-        <Button text={"Serviços"} onClickHandle={redirect} />
+        <Button text={"Serviços"} onClickHandle={redirect} toggle={toggleMenu}/>
         <Button text={"Cases"} onClickHandle={redirect} />
         <Button text={"InCompany"} onClickHandle={redirect} />
         <Button text={"Contato"} onClickHandle={redirect} />

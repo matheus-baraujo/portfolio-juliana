@@ -1,13 +1,13 @@
 import React from 'react'
 import styles from './styles.module.css'
 
-const index = ({ text, onClickHandle}) => {
+const index = ({ text, onClickHandle, toggle}) => {
 
   var url = null;
 
   switch (text) {
     case 'Serviços':
-      url = 'servicos'
+      url = '#services'
       break;
     case 'Cases':
       url = 'cases'
@@ -26,7 +26,7 @@ const index = ({ text, onClickHandle}) => {
 
   return (
     <button className={styles.btn}
-      onClick={() => {onClickHandle(url)} } >
+      onClick={() => {text == 'Serviços' ? (toggle(), onClickHandle(url)) : onClickHandle(url)} } >
       <span>{text}</span>
     </button>
   )

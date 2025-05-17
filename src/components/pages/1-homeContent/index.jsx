@@ -6,6 +6,7 @@ import Cta2 from '@/components/pages/1-homeContent/1 - cta2'
 import Sobre from '@/components/pages/1-homeContent/2 - sobre'
 import Cases from '@/components/pages/1-homeContent/3 - cases'
 import Services from '@/components/pages/1-homeContent/4 - services'
+import Reviews from '@/components/pages/1-homeContent/5 - reviews'
 
 const index = () => {
   return (
@@ -28,6 +29,8 @@ const index = () => {
       <Cases />
 
       <Services />
+
+      <Reviews />
     </div>
   )
 }

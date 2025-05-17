@@ -29,3 +29,13 @@
     transform: translateX(-50%);
   }
 }
+
+@media screen and (max-width: 768px) {
+  .carouselItem img {
+    height: 36px;
+  }
+  
+  .carouselContainer {
+    margin: 20px 0px;
+  }
+}

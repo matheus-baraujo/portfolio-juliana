@@ -3,7 +3,6 @@
   display: flex;
   flex-direction: row;
   align-items: flex-start; /* importante */
-
 }
 
 .borderTop{
@@ -47,4 +46,27 @@
 
 .col2{
   border-left: 2px solid var(--accent);
+}
+
+@media screen and (max-width: 768px) {
+  .container{
+    flex-direction: column;
+  }
+
+  .borderTop, .borderBottom{
+    display: none;
+  }
+
+  .col1, .col2{
+    width: 100%;
+    padding: 0px;
+    border: none;
+  }
+
+  .col1 h2{
+    width: 80%;
+    font-size: 22px;
+    color: var(--text);
+  }
+  
 }

@@ -65,3 +65,53 @@
   border-radius: 100px;
   background-color: var(--highlight);
 }
+
+@media screen and (max-width: 768px) {
+  .container{
+    margin: 50px 0px;
+  }
+
+  .title{
+    font-size: 22px;
+  }
+
+  .title img{
+    width: 40px;
+    height: 40px;
+  }
+
+  .subtitle{
+    font-size: 14px;
+  }
+
+  .content{
+    gap: 10px;
+  }
+
+  .col{
+    width: 50%;
+    gap: 10px;
+  }
+
+  .col p, .col h2{
+    font-size: 14px;
+  }
+
+  .col h2{
+    margin: 0;
+  }
+
+  .col img{
+    width: 100%;
+    height: auto;
+  }
+
+  .imgContainer .logoSobre2{
+    left: -30px;
+    width: 60px;
+    height: 60px;
+    padding: 10px;
+    bottom: -25px;
+  }
+  
+}

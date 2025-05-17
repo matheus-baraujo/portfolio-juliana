@@ -16,7 +16,7 @@ const index = () => {
 
 
   return (
-    <div className={styles.container}>
+    <div className={styles.container} id='services'>
       
       <div className={styles.borderTop}> </div>
       <div className={styles.borderBottom}> </div>

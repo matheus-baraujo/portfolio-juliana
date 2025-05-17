@@ -7,3 +7,15 @@
   font-family: var(--font-black-mango);
   color: var(--text);
 }
+
+@media screen and (max-width: 768px) {
+
+  .container{
+    margin-bottom: 40px;
+  }
+
+  .title h2{
+    font-size: 22px;
+  }
+  
+}

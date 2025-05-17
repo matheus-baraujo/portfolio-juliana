@@ -59,3 +59,37 @@
   object-fit: cover;
   object-position: center;
 }
+
+@media screen and (max-width: 768px) {
+
+  .container{
+    height: 350px;
+    width: calc(100% - 40px);
+  }
+
+  .videoContainer{
+    width: 100%;
+    height: 100%;
+  }
+
+  .filter{
+    width: calc(100% - 40px);
+  }
+
+  .cta{
+    width: calc(100% - 40px);
+  }
+
+  .cta h2{
+    font-size: 32px;
+    width: 50%;
+    padding: 25px 10px;
+  }
+
+  .cta p{
+    font-size: 20px;
+    width: 50%;
+    padding: 25px 10px;
+  }
+  
+}

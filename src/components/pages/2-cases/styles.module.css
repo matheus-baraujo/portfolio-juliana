@@ -25,6 +25,7 @@
   .container{
     padding: 0px 20px;
     margin: 100px auto 50px;
+    width: calc(100% - 40px);
   }
   .cta h2{
     font-size: 32px;
