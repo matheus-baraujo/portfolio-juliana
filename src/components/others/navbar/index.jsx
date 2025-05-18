@@ -3,6 +3,8 @@
 import React, { useRef } from 'react'
 import styles from './styles.module.css'
 
+import { usePathname } from 'next/navigation';
+
 import Button from '@/components/others/navbar/button'
 import Button2 from '@/components/others/navbar/button2'
 
@@ -14,14 +16,16 @@ const redirect = (url) => {
 }
 
 const Index = ({ footer }) => {
-  const menuRef = useRef()
+  const menuRef = useRef();
+
+  const pathname = usePathname();
 
   const toggleMenu = () => {
     menuRef.current.classList.toggle(styles.active)
   }
 
   return (
-    <div className={styles.navbar}>
+    <div className={ (pathname == '/incompany' ? styles.navbar+' '+styles.inCompany : styles.navbar)}>
       <img className={styles.logoMobile} src="/logos/logoMenu.png" alt="logo" onClick={() => window.location.href = '/' }/>
 
       <div className={styles.menu} ref={menuRef}>
@@ -31,7 +35,7 @@ const Index = ({ footer }) => {
         <Button text={"Cases"} onClickHandle={redirect} />
         <Button text={"InCompany"} onClickHandle={redirect} />
         <Button text={"Contato"} onClickHandle={redirect} />
-        <Button2 text={"Orçamento"} onClickHandle={redirect} footer={footer} />
+        <Button2 text={"Orçamento"} onClickHandle={redirect} footer={footer} inCompany={(pathname == '/incompany' ? true : false)}/>
       </div>
 
       <button className={styles.sandwich} onClick={toggleMenu}>

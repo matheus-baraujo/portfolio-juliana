@@ -6,6 +6,8 @@
   border-bottom: 1px solid var(--highlight);
 }
 
+
+
 .menu{
   display: flex;
   justify-content: space-between;
@@ -37,6 +39,18 @@
 
 .sandwich{
   display: none;
+}
+
+.inCompany{
+  background-color: var(--inCompanyHighlight);
+}
+
+.inCompany .logo{
+  filter: brightness(100);
+}
+
+.inCompany span{
+  color: white;
 }
 
 @media screen and (max-width: 768px) {

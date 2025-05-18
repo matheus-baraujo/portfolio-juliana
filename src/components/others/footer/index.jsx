@@ -15,6 +15,13 @@ const index = () => {
 
   const pathname = usePathname();
 
+  var aux = null
+  var aux2 = null
+
+  pathname == '/contato' ? aux = styles.footerContato : aux = styles.footer
+
+  pathname == '/incompany' ? aux2 = styles.inCompany : aux2 = ''
+
   const info = [
     [faInstagram, 'fab fa-instagram'],
     [faWhatsapp, 'fab fa-whatsapp'],
@@ -22,7 +29,7 @@ const index = () => {
   ];
 
   return (
-    <div className={ (pathname == '/contato' ? styles.footerContato : styles.footer)}>
+    <div className={ (aux+' '+aux2)}>
 
 
       {

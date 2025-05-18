@@ -167,6 +167,38 @@
 }
 
 
+.inCompany{
+  background-color: var(--inCompanyText);
+  
+}
+
+.inCompany .cta, .inCompany .socials2 .icons a, .inCompany .copyright{
+  color: var(--inCompanyHighlight);
+}
+
+.inCompany .msgButton button{
+  background-color: var(--inCompanyHighlight);
+  color: var(--inCompanyText);
+}
+
+.inCompany .msgButton button:hover{
+  background-color: var(--inCompanyText);
+  color: var(--inCompanyHighlight);
+  border: 1px solid var(--inCompanyHighlight);
+}
+
+.inCompany .top{
+  background-color: transparent;
+  color: var(--inCompanyHighlight);
+  border: 1px solid var(--inCompanyHighlight);
+}
+
+.inCompany .top:hover{
+  background-color: var(--inCompanyHighlight);
+  color: var(--inCompanyText);
+  border: 1px solid var(--inCompanyText);
+}
+
 @media screen and (max-width: 768px) {
   .footer{
     height: 450px;

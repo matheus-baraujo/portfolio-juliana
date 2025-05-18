@@ -97,6 +97,27 @@
   background-color: white;
 }
 
+.btnDefault.inCompany{
+  background-color: var(--inCompanyText);
+}
+
+.btnDefault.inCompany span{
+  color: var(--inCompanyHighlight);
+}
+
+.btnFooter.inCompany{
+  background-color: transparent;
+}
+
+.btnFooter.inCompany:hover{
+  background-color: var(--highlight);
+  color: white;
+  opacity: 1;
+}
+
+.btnFooter.inCompany span{
+  color: var(--inCompanyText);
+}
 
 @media screen and (max-width: 768px) {
   .btn {
