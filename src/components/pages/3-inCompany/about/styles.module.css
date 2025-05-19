@@ -1,0 +1,43 @@
+.row{
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  gap: 70px;
+  position: relative;
+  margin-bottom: 120px;
+  z-index: 1;
+}
+
+.star{
+  position: absolute;
+  height: 345px;
+  z-index: -1;
+  top: -75px;
+}
+
+.info{
+  width: calc(60% - 35px);
+  color: var(--inCompanyText);
+}
+
+.info h2{
+  margin-top: 0;
+  max-width: 458px;
+  font-family: var(--font-black-mango);
+  font-size: 54px;
+  font-weight: bold;
+}
+
+.info p{
+  font-family: var(--font-montserrat);
+  font-size: 22px;
+}
+
+.img{
+  width: calc(40% - 35px);
+  height: 700px;
+  background-image: url('/imagens/sobre1.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}

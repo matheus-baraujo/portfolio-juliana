@@ -1,0 +1,43 @@
+.row{
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  gap: 70px;
+  position: relative;
+  z-index: 1;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.row h2{
+  width: 543px;
+  font-family: var(--font-black-mango);
+  font-size: 120px;
+  font-weight: bold;
+  color: var(--inCompanyText);
+}
+
+.row img{
+  width: 1200px;
+  height: 730px;
+  position: absolute;
+  z-index: -1;
+}
+
+.bg{
+  height: 100%;
+  width: 100vw;
+  position: absolute;
+  top: 0;
+  left: calc(-(100vw - 1250px)/2);
+  z-index: -2;
+  background-color: var(--inCompanyHighlight);
+}
+
+@media screen and (max-width: 768px) {
+  .row{
+    display: none;
+  }
+  
+}

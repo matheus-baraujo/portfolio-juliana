@@ -7,6 +7,10 @@ import Title2 from './title2'
 import Imgs1 from './imgs1'
 import Imgs2 from './imgs2'
 import Imgs3 from './imgs3'
+import About from './about'
+import Brands from './brands'
+import BigLogo from './bigLogo'
+
 
 const index = () => {
 
@@ -68,6 +72,9 @@ const index = () => {
         </div>
 
         <div className={styles.row}>
+
+          <img className={styles.star +' '+ styles.star1} src="icons/star.png" alt="" />
+
           <div className={styles.col}>
             <Title2 minor={titles[0][0]} major={titles[0][1]} span={titles[0][2]}/>
             <Imgs1 />
@@ -93,6 +100,8 @@ const index = () => {
         </div>
 
         <div className={styles.row}>
+
+          <img className={styles.star +' '+ styles.star2} src="icons/star.png" alt="" />
       
           <div className={styles.col}>
             <div className={styles.info}>
@@ -119,6 +128,9 @@ const index = () => {
         </div>
 
         <div className={styles.row}>
+
+          <img className={styles.star +' '+ styles.star1} src="icons/star.png" alt="" />
+
           <div className={styles.col}>
             <Title2 minor={titles[2][0]} major={titles[2][1]} span={titles[2][2]}/>
             <Imgs3 />
@@ -143,25 +155,11 @@ const index = () => {
 
         </div>
 
-        <div className={styles.row}>
+        <About />
 
-          <div className={styles.col}>
-            <h2>Quem será a sua professora?</h2>
-            <div>
-              <p>Mente engenheira e alma comunicadora juntei o meu pensamento estruturado e a minha criatividade para gerir e criar conteúdo na internet.</p>
-              <p>Amo planejar e criar estratégias que evidenciam a autenticidade e a missão de negócios através de conteúdos criativos e envolventes.</p>
-              <p>Liderei o time de Marketing da Espaçonave, escola de empreendedorismos criativo por 3 anos e desde 2022 trabalho exclusivamente com conteúdo para redes sociais.</p>
-              <p>Já tive mais de 300 alunos e mentorias nos últimos quatro anos criando conteúdo.</p>
-            </div>
-            
-          </div>
+        <Brands />
 
-          <div className={styles.col}>
-            <img src="imagens/sobre1.png" alt="" />
-          </div>
-
-        </div>
-
+        <BigLogo />
 
       </div>
     
