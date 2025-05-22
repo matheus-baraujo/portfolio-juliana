@@ -34,8 +34,14 @@ const Index = ({ footer }) => {
         <Button text={"Serviços"} onClickHandle={redirect} toggle={toggleMenu}/>
         <Button text={"Cases"} onClickHandle={redirect} />
         <Button text={"InCompany"} onClickHandle={redirect} />
+
+        {
+        footer ? 
         <Button text={"Contato"} onClickHandle={redirect} />
-        <Button2 text={"Orçamento"} onClickHandle={redirect} footer={footer} inCompany={(pathname == '/incompany' ? true : false)}/>
+        :
+        <Button2 text={"Contato"} onClickHandle={redirect} footer={footer} inCompany={(pathname == '/incompany' ? true : false)}/>
+        }
+
       </div>
 
       <button className={styles.sandwich} onClick={toggleMenu}>

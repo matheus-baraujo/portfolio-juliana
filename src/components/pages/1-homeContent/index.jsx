@@ -18,7 +18,7 @@ const index = () => {
         <button>Ver Trabalhos</button>
       </div>
 
-      <video className={styles.bigVideo} src="videos/exampleHome.mp4" autoPlay loop></video>
+      <video className={styles.bigVideo} src="videos/exampleHome.mp4" autoPlay loop muted></video>
 
       <SliderMarcas />
 

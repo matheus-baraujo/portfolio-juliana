@@ -40,7 +40,7 @@
 .btn span::before {
   content: '';
   position: absolute;
-  left: -105px;
+  left: -119px;
   bottom: -20px;
   width: 350px;
   height: 1px;
@@ -51,7 +51,7 @@
 .btn span::after {
   content: '';
   position: absolute;
-  left: -105px;
+  left: -119px;
   top: -20px;
   width: 350px;
   height: 1px;
