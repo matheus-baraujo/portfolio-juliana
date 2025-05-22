@@ -36,7 +36,7 @@
   padding: 5px 20px;
   display: inline-block;
 }
-
+/* 
 .btn span::before {
   content: '';
   position: absolute;
@@ -79,14 +79,14 @@
   height: 100%;
   background-color: var(--text);
   transition: transform 0.3s ease-in-out;
-}
+} */
 
 
 .btn:hover{
   scale: .95;
   opacity: .8;
 }
-
+/* 
 .btnFooter:hover{
   background-color: var(--highlight);
   color: white;
@@ -95,7 +95,7 @@
 
 .btnFooter:hover span::before, .btnFooter:hover span::after, .btnFooter:hover::before, .btnFooter:hover::after {
   background-color: white;
-}
+} */
 
 .btnDefault.inCompany{
   background-color: var(--inCompanyText);
@@ -135,7 +135,7 @@
     display: inline-block;
     color: white;
   }
-  
+/*   
   .btn::before{
     left: 10px;
   }
@@ -171,5 +171,5 @@
     background-color: var(--text);
     transform: scaleX(1.1);
     transition: transform 0.3s ease-in-out;
-  }
+  } */
 }

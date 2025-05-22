@@ -26,7 +26,7 @@
   padding: 5px 20px;
   display: inline-block;
 }
-
+/* 
 .btn span::before {
   content: '';
   position: absolute;
@@ -80,10 +80,10 @@
   background-color: var(--highlight);
   color: white;
 }
-
+/* 
 .btn:hover span::before, .btn:hover span::after, .btn:hover::before, .btn:hover::after {
   background-color: white !important;
-}
+}  */
 
 @media screen and (max-width: 768px) {
   .btn {
@@ -94,10 +94,10 @@
   .btn span {
     color: white;
   }
-  .btn::before, .btn::after {
+  /* .btn::before, .btn::after {
     top: 5%;
     height: 90%;
-  }
+  } */
   .btn span::before, .btn span::after {
     /* height: 1px; */
   }

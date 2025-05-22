@@ -20,7 +20,7 @@ const index = ({ text, onClickHandle, footer, inCompany}) => {
 
   return (
     <button className={styles.btn + ' ' + aux + ' ' + aux2}
-      onClick={() => {onClickHandle('orcamento')} } >
+      onClick={() => {onClickHandle('contato')} } >
       <span>{text}</span>
     </button>
   )
