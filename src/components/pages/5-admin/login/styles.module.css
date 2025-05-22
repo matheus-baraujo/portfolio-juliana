@@ -1,0 +1,155 @@
+.containerLogin{
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+
+.title{
+  text-align: center;
+  color: var(--accent);
+}
+.title h2{
+  font-family: var(--font-black-mango);
+  font-size: 64px;
+  font-weight: bold;
+  margin: 0%;
+}
+.title img{
+  width: 80px;
+  height: 71px;
+}
+
+
+
+.loginBox {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  border: 1px solid var(--text);
+  border-radius: 12px;
+  padding: 36px;
+  margin: 0px auto;
+  width: 355px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+.loginBox h2 {
+  margin: 0;
+  text-align: center;
+  font-family: var(--font-black-mango);
+  font-size: 36px;
+  font-weight: bold;
+  color: var(--text);
+}
+.loginBox p {
+  margin: 0;
+  text-align: center;
+  color: var(--text);
+  font-family: var(--font-montserrat);
+  font-size: 20px;
+}
+
+.input{
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.input label {
+  margin: 0;
+  color: var(--text);
+  font-family: var(--font-montserrat);
+  font-size: 18px;
+  font-weight: bold;
+}
+.loginBox input[type="email"],
+.loginBox input[type="password"],
+.loginBox input[type="text"] {
+  width: calc(100% - 50px);
+  border: 1px solid var(--text);
+  border-radius: 12px;
+  padding: 15px 15px 15px 35px;
+  background-color: transparent;
+  font-family: var(--font-montserrat);
+}
+
+
+.input .inputWrapper{
+  position: relative;
+}
+.input .inputWrapper .inputIcon {
+  position: absolute;
+  top: 50%;
+  left: 12px;
+  transform: translateY(-50%);
+  color: var(--text); /* mesma cor do seu ícone atual */
+  font-size: 1rem;
+}
+.input .inputWrapper .inputIcon2 {
+  position: absolute;
+  top: 50%;
+  right: 12px;
+  transform: translateY(-50%);
+  color: var(--text); /* mesma cor do seu ícone atual */
+  font-size: 1rem;
+}
+
+
+.loginBox input[type="email"]::placeholder,
+.loginBox input[type="password"]::placeholder,
+.loginBox input[type="text"]::placeholder {
+  font-family: var(--font-montserrat);
+}
+.loginBox input[type="email"]:focus,
+.loginBox input[type="password"]:focus,
+.loginBox input[type="text"]:focus {
+  color: white;
+  border: 1px solid var(--text);
+  background-color: #62733D80;
+  outline: none;
+}
+.loginBox input[type="email"]:focus::placeholder,
+.loginBox input[type="password"]:focus::placeholder,
+.loginBox input[type="text"]:focus::placeholder {
+  color: white;
+}
+
+
+.passwordRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.passwordRow small {
+  font-size: 12px;
+  font-family: var(--font-montserrat);
+  color: var(--text);
+  font-weight: 600;
+  transition: ease-in-out .3s;
+}
+.passwordRow small:hover{
+  color: var(--accent);
+}
+
+
+.showPassword {
+  margin-left: -2rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+
+.loginBox button {
+  background-color: var(--highlight);
+  color: white;
+  border: none;
+  width: 100%;
+  padding: 15px;
+  border-radius: 12px;
+  font-weight: bold;
+  font-family: var(--font-montserrat);
+  transition: ease-in-out .3s;
+}
+.loginBox button:hover {
+  background-color: var(--accent);
+}

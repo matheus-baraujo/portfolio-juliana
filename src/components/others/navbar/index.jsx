@@ -31,22 +31,36 @@ const Index = ({ footer }) => {
       <div className={styles.menu} ref={menuRef}>
         <img className={styles.logo} src="/logos/logoMenu.png" alt="logo" onClick={() => window.location.href = '/' }/>
 
-        <Button text={"Serviços"} onClickHandle={redirect} toggle={toggleMenu}/>
-        <Button text={"Cases"} onClickHandle={redirect} />
-        <Button text={"InCompany"} onClickHandle={redirect} />
-
         {
-        footer ? 
-        <Button text={"Contato"} onClickHandle={redirect} />
-        :
-        <Button2 text={"Contato"} onClickHandle={redirect} footer={footer} inCompany={(pathname == '/incompany' ? true : false)}/>
+          pathname == '/administrator' ?
+          <></>
+          :
+          <>
+            <Button text={"Serviços"} onClickHandle={redirect} toggle={toggleMenu}/>
+            <Button text={"Cases"} onClickHandle={redirect} />
+            <Button text={"InCompany"} onClickHandle={redirect} />
+
+            {
+              footer ? 
+              <Button text={"Contato"} onClickHandle={redirect} />
+              :
+              <Button2 text={"Contato"} onClickHandle={redirect} footer={footer} inCompany={(pathname == '/incompany' ? true : false)}/>
+            }
+          </>
+
         }
 
       </div>
 
-      <button className={styles.sandwich} onClick={toggleMenu}>
-        <FontAwesomeIcon icon={faBars} className={'fas fa-bars'} />
-      </button>
+      {
+        pathname == '/administrator' ?
+        <></>
+        :
+        <button className={styles.sandwich} onClick={toggleMenu}>
+          <FontAwesomeIcon icon={faBars} className={'fas fa-bars'} />
+        </button>
+      }
+      
     </div>
   )
 }

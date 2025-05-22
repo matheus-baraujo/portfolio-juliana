@@ -92,6 +92,10 @@
     display: block;
     height: 90%;
     margin-left: 20px;
+    
+  }
+
+  .inCompany .logoMobile{
     filter: brightness(100);
   }
 
@@ -103,6 +107,10 @@
     background-color: transparent;
     color: var(--highlight);
     transition: all 0.3s ease-in-out;
+  }
+
+  .inCompany .sandwich{
+    color: var(--inCompanyText);
   }
 
   .sandwich:hover{

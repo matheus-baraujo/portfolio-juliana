@@ -17,10 +17,13 @@ const index = () => {
 
   var aux = null
   var aux2 = null
+  var aux3 = null
 
   pathname == '/contato' ? aux = styles.footerContato : aux = styles.footer
 
   pathname == '/incompany' ? aux2 = styles.inCompany : aux2 = ''
+
+  pathname == '/administrator' ? aux3 = styles.admin : aux3 = ''
 
   const info = [
     [faInstagram, 'fab fa-instagram'],
@@ -29,7 +32,7 @@ const index = () => {
   ];
 
   return (
-    <div className={ (aux+' '+aux2)}>
+    <div className={ (aux+' '+aux2+' '+aux3)}>
 
 
       {
@@ -70,36 +73,35 @@ const index = () => {
 
       <div className={styles.section}>
 
-      {
-        pathname == '/contato' ?
-          <>
-            <div className={styles.socials}>
-              <div className={styles.info}>
+        {
+          pathname == '/contato' ?
+            <>
+              <div className={styles.socials}>
+                <div className={styles.info}>
 
-                <p>Onde me encontrar</p>
+                  <p>Onde me encontrar</p>
 
-                <div className={styles.icons}>
-                  <a href="#" target="_blank" rel="noopener noreferrer">
-                    <FontAwesomeIcon icon={info[0][0]} className={info[0][1]} />
-                  </a>
-                  <a href="#" target="_blank" rel="noopener noreferrer">
-                    <FontAwesomeIcon icon={info[1][0]} className={info[1][1]} />
-                  </a>
-                  <a href="#" target="_blank" rel="noopener noreferrer">
-                    <FontAwesomeIcon icon={info[2][0]} className={info[2][1]} />
-                  </a>
+                  <div className={styles.icons}>
+                    <a href="#" target="_blank" rel="noopener noreferrer">
+                      <FontAwesomeIcon icon={info[0][0]} className={info[0][1]} />
+                    </a>
+                    <a href="#" target="_blank" rel="noopener noreferrer">
+                      <FontAwesomeIcon icon={info[1][0]} className={info[1][1]} />
+                    </a>
+                    <a href="#" target="_blank" rel="noopener noreferrer">
+                      <FontAwesomeIcon icon={info[2][0]} className={info[2][1]} />
+                    </a>
+                  </div>
                 </div>
               </div>
-            </div>
-          </>
-          :
-          <Navbar footer={true}/>
-      }
+            </>
+            : pathname == '/administrator' ?
+              <></>
+              :
+              <Navbar footer={true}/>
+        }
 
         
-
-        
-
         <div className={styles.copyright}>
           <p>Política de privacidade</p>
           <p>2025 by FINDOUT | Juliana Ilha</p>

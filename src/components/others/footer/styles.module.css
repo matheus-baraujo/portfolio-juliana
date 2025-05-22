@@ -15,7 +15,6 @@
   background-color: var(--highlight);
   justify-content: space-between;
 }
-
 .cta{
   display: flex;
   color: white;
@@ -25,19 +24,16 @@
   max-width: 1250px;
   width: 100%;
 }
-
 .cta h2, .socials2 h2{
   font-size: 80px;
   margin: 0;
   font-family: var(--font-black-mango);
 }
-
 .msgButton{
   display: flex;
   flex-direction: row;
   justify-content: space-between;
 }
-
 .msgButton p{
   font-size: 36px;
   width: 615px;
@@ -45,7 +41,6 @@
   margin: 0;
   font-family: var(--font-montserrat);
 }
-
 .msgButton button{
   background-color: var(--bg);
   color: var(--highlight);
@@ -58,26 +53,22 @@
   cursor: pointer;
   transition: all 0.3s ease-in-out;
 }
-
 .msgButton button:hover{
   background-color: var(--accent);
   color: white;
 }
-
 .socials2{
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
 }
-
 .socials2 .icons{
   display: flex;
   font-size: 50px;
   flex-direction: row;
   gap: 30px;
 }
-
 .top{
   width: 180px;
   height: 40px;
@@ -89,19 +80,16 @@
   background-color: var(--highlight);
   transition: all 0.3s ease-in-out;
 }
-
 .top:hover{
   background-color: white;
   color: var(--highlight);
   cursor: pointer;
 }
-
 .section{
   display: flex;
   flex-direction: column;
   gap: 20px;
 }
-
 .socials{
   display: flex;
   color: white;
@@ -111,27 +99,23 @@
   max-width: 1250px;
   width: 100%;
 }
-
 .socials .icons{
   display: flex;
   font-size: 24px;
   flex-direction: row;
   gap: 20px;
 }
-
 .socials .icons a, .socials2 .icons a{
   color: white;
   height: fit-content;
   text-decoration: none;
   transition: all 0.3s ease-in-out;
 }
-
 .socials .icons a:hover, .socials2 .icons a:hover{
   scale: 1.5;
   color: var(--accent);
   text-shadow: 1px 1px 20px white;
 }
-
 .info{
   display: flex;
   color: white;
@@ -143,13 +127,11 @@
   height: 170px;
   border-bottom: 1px solid white;
 }
-
 .info p{
   font-family: var(--font-montserrat);
   font-size: 24px;
   margin: 0;
 }
-
 .copyright{
   display: flex;
   color: white;
@@ -160,7 +142,6 @@
   width: 100%;
   margin-top: 90px;
 }
-
 .copyright p{
   font-family: var(--font-montserrat);
   font-size: 24px;
@@ -172,33 +153,43 @@
   background-color: var(--inCompanyText);
   
 }
-
 .inCompany .cta, .inCompany .socials2 .icons a, .inCompany .copyright{
   color: var(--inCompanyHighlight);
 }
-
 .inCompany .msgButton button{
   background-color: var(--inCompanyHighlight);
   color: var(--inCompanyText);
 }
-
 .inCompany .msgButton button:hover{
   background-color: var(--inCompanyText);
   color: var(--inCompanyHighlight);
   border: 1px solid var(--inCompanyHighlight);
 }
-
 .inCompany .top{
   background-color: transparent;
   color: var(--inCompanyHighlight);
   border: 1px solid var(--inCompanyHighlight);
 }
-
 .inCompany .top:hover{
   background-color: var(--inCompanyHighlight);
   color: var(--inCompanyText);
   border: 1px solid var(--inCompanyText);
 }
+
+
+.admin{
+  height: auto;
+  padding: 20px 0px;
+}
+.admin .cta, .admin .section .navbar{
+  display: none;
+}
+.admin .section .copyright{
+  margin-top: 0;
+}
+
+
+
 
 @media screen and (max-width: 768px) {
   .footer{
@@ -268,4 +259,15 @@
     padding-top: 10px;
   }
 
+
+  .admin{
+    height: auto;
+    padding: 10px;
+  }
+  .admin .section{
+    border: none; 
+  }
+  .admin .section .copyright{
+    margin-top: 0; 
+  }
 }
