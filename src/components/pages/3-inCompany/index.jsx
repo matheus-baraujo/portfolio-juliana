@@ -2,11 +2,10 @@ import React from 'react'
 import styles from './styles.module.css'
 
 import Title from './title'
-import Title2 from './title2'
 
-import Imgs1 from './imgs1'
-import Imgs2 from './imgs2'
-import Imgs3 from './imgs3'
+import Videos from './videos'
+import Case from './Case'
+
 import About from './about'
 import Brands from './brands'
 import BigLogo from './bigLogo'
@@ -66,94 +65,19 @@ const index = () => {
           </div>
 
           <div className={styles.col2}>
-            <video src="videos/example (1).mp4" autoPlay loop muted></video>
-            <video src="videos/example (2).mp4" autoPlay loop muted></video>
+            <Videos />
           </div>
         </div>
 
-        <div className={styles.row}>
+        {titles.map((item, index)=>{
+          var odd = (index%2 == 0);
 
-          <img className={styles.star +' '+ styles.star1} src="icons/star.png" alt="" />
-
-          <div className={styles.col}>
-            <Title2 minor={titles[0][0]} major={titles[0][1]} span={titles[0][2]}/>
-            <Imgs1 />
-          </div>
-
-          <div className={styles.col}>
-            <div className={styles.info}>
-
-              {
-                items[0].map((item, index) => {
-                  return(
-                    <div className={styles.item} key={index}>
-                      <img src="icons/star2.png" alt="" />
-                      <p>{item}</p>
-                    </div>
-                  )
-                })
-              }
-
+          return(
+            <div className={styles.row} key={index}>
+              <Case odd={odd} number={index} title={item} items={items[index]}/>
             </div>
-          </div>
-
-        </div>
-
-        <div className={styles.row}>
-
-          <img className={styles.star +' '+ styles.star2} src="icons/star.png" alt="" />
-      
-          <div className={styles.col}>
-            <div className={styles.info}>
-
-              {
-                items[1].map((item, index) => {
-                  return(
-                    <div className={styles.item} key={index}>
-                      <img src="icons/star2.png" alt="" />
-                      <p>{item}</p>
-                    </div>
-                  )
-                })
-              }
-
-            </div>
-          </div>
-
-          <div className={styles.col}>
-            <Title2 minor={titles[1][0]} major={titles[1][1]} span={titles[1][2]}/>
-            <Imgs2 />
-          </div>
-
-        </div>
-
-        <div className={styles.row}>
-
-          <img className={styles.star +' '+ styles.star1} src="icons/star.png" alt="" />
-
-          <div className={styles.col}>
-            <Title2 minor={titles[2][0]} major={titles[2][1]} span={titles[2][2]}/>
-            <Imgs3 />
-          </div>
-
-          <div className={styles.col}>
-            <div className={styles.info}>
-
-              {
-                items[2].map((item, index) => {
-                  return(
-                    <div className={styles.item} key={index}>
-                      <img src="icons/star2.png" alt="" />
-                      <p>{item}</p>
-                    </div>
-                  )
-                })
-              }
-
-            </div>
-          </div>
-
-        </div>
+          )
+        })}
 
         <About />
 

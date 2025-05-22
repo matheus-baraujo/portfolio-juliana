@@ -20,7 +20,7 @@
   color: var(--inCompanyText);
 }
 
-.info h2{
+.info h2, .colMobile h2{
   margin-top: 0;
   max-width: 458px;
   font-family: var(--font-black-mango);
@@ -40,4 +40,49 @@
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+}
+
+
+@media screen and (max-width: 768px) {
+
+  .row{
+    gap: 10px;
+    margin-bottom: 60px;
+  }
+
+  .colMobile{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .rowMobile{
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    width: 100%;
+  }
+
+  .info{
+    width: 185px;
+  }
+  .info h2, .colMobile h2{
+    font-size: 16px;
+    max-width: 100%;
+    width: 100%;
+    color: var(--inCompanyText);
+  }
+  .info p{
+    font-size: 12px;
+    margin-top: 0px;
+  }
+
+  .img{
+    width: 189px;
+    height: 329px;
+  }
+
+  .star{
+    display: none;
+  }
 }

@@ -8,8 +8,6 @@
   color: var(--inCompanyText);
 }
 
-
-
 .text h3{
   font-family: var(--font-black-mango);
   font-size: 54px;
@@ -43,4 +41,24 @@
 .text p img{
   width: 85px;
   height: 60px;
+}
+
+@media screen and (max-width: 768px) {
+  .text h3{
+    font-size: 20px;
+  } 
+
+  .text h3 span{
+    font-size: 18px;
+    padding: 5px;
+  }
+
+  .text p{
+    font-size: 12px;
+  }
+
+  .text p img{
+    width: 30px;
+    height: 22px;
+  }
 }

@@ -4,7 +4,6 @@
   position: relative;
   margin-bottom: -5px;
 }
-
 .ctaVideo{
   width: 100%;
   height: calc(100vh - 100px);
@@ -13,7 +12,6 @@
   object-fit: cover;
   object-position: center;
 }
-
 .ctaText{
   position: absolute;
   max-width: 1250px;
@@ -24,22 +22,18 @@
   color: var(--inCompanyText);
   text-align: center;
 }
-
-
 .ctaText h2{
   font-family: var(--font-black-mango);
   font-size: 120px;
   margin: 0;
   font-weight: bold;
 }
-
 .ctaText h3{
   font-family: var(--font-black-mango);
   font-size: 90px;
   margin: 0;
   font-weight: bold;
 }
-
 .ctaText h3 span{
   font-family: var(--font-montserrat);
   font-size: 90px;
@@ -50,7 +44,6 @@
   padding: 10px 30px;
   background-color: var(--inCompanyHighlight);
 }
-
 .ctaText p{
   font-family: var(--font-montserrat);
   font-size: 40px;
@@ -74,7 +67,6 @@
 
 .row{
   display: flex;
-  width: calc(100% - 40px);
   flex-direction: row;
   margin-bottom: 120px;
   justify-content: space-between;
@@ -137,6 +129,8 @@
   object-position: center;
 }
 
+
+
 .star{
   position: absolute;
   height: 1007px;
@@ -154,12 +148,56 @@
 
 @media screen and (max-width: 768px) {
   .container{
-    margin: 100px auto 50px;
+    margin: 0px;
+    width: calc(100% - 40px);
+    padding: 60px 20px 0px;
   }
   .cta{
     text-align: center;
+    margin-top: 80px;
+  }
+  .ctaVideo{
+    height: 602px;
+  }
+
+  .ctaText h2{
+    font-size: 47px;
+  }
+  .ctaText h3, .ctaText h3 span{
+    font-size: 35px;
+  }
+  .ctaText p{
+    font-size: 15px;
+  }
+  .ctaText p img{
+    width: 47px;
+    height: 35px;
   }
   
+  .row{
+    margin-bottom: 60px;
+  }
+
+  .info{
+    gap: 10px;
+    padding: 0px 10px;
+    width: calc(100% - 20px);
+  }
+
+  .info .item{
+    gap: 10px;
+  }
+
+  .info .item img{
+    display: none;
+  }
+
+  .info .item p{
+    width: 185px;
+    font-size: 14px;
+  }
+
+
 
   .star{
     display: none;

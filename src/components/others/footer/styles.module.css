@@ -128,6 +128,7 @@
 
 .socials .icons a:hover, .socials2 .icons a:hover{
   scale: 1.5;
+  color: var(--accent);
   text-shadow: 1px 1px 20px white;
 }
 

@@ -31,7 +31,6 @@ const index = ({projeto, direction, home}) => {
     autoplay: true,
   };
 
-
   if (!isClient) return null; // Evita render no SSR
 
   const videoList = Array.isArray(projeto?.[2]) ? projeto[2] : [];

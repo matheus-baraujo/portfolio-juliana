@@ -4,19 +4,19 @@
   position: relative;
 }
 
-.img1, .img2, .img3{
+.img1, .img2{
   box-shadow: 0px 10px 15px #00000025;
 }
 
 
 .img1{
   position: absolute;
-  width: 186px;
-  height: 345px;
+  width: 258px;
+  height: 341px;
   z-index: 1;
   top: 0;
-  left: 25%;
-  transform: rotate(-3.24deg);
+  left: 20%;
+  transform: rotate(-2.56deg);
 
   background-image: url('/imagens/inCompany (1).jpg');
   background-position: center;
@@ -26,12 +26,12 @@
 
 .img2{
   position: absolute;
-  width: 202px;
-  height: 178px;
+  width: 249px;
+  height: 263px;
   z-index: 2;
-  top: 15%;
+  top: 27%;
   left: 50%;
-  transform: rotate(8.39deg);
+  transform: rotate(6.75deg);
 
   background-image: url('/imagens/inCompany (2).jpg');
   background-position: center;
@@ -39,18 +39,22 @@
   background-size: cover;
 }
 
-.img3{
-  position: absolute;
-  width: 120px;
-  height: 144px;
-  z-index: 3;
-  top: 50%;
-  left: 50%;
-  transform: rotate(5.83deg);
+@media screen and (max-width: 768px) {
 
-  background-image: url('/imagens/inCompany (3).jpg');
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
+  .containerSlider{
+    padding: 0px 10px 30px 0px;
+  }
+  
+  .img1, .img2{
+    position: relative;
+    z-index: 0;
+    transform: rotate(0deg);
+    box-shadow: none;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 329px;
+  }
 }
-

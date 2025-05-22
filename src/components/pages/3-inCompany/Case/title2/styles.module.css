@@ -45,3 +45,23 @@
   width: 85px;
   height: 60px;
 }
+
+@media screen and (max-width: 768px) {
+
+  .text h3{
+    font-size: 24px;
+    line-height: 1.6;
+  }
+
+  .text h3 span{
+    font-size: 13px;
+    padding: 5px;
+  }
+
+  .text p{
+    font-size: 10px;
+    margin-bottom: 0px;
+  }
+
+
+}
