@@ -6,8 +6,6 @@
   border-bottom: 1px solid var(--highlight);
 }
 
-
-
 .menu{
   display: flex;
   justify-content: space-between;
@@ -43,6 +41,7 @@
 
 .inCompany{
   background-color: var(--inCompanyHighlight);
+  border: none;
 }
 
 .inCompany .logo{

@@ -36,13 +36,13 @@ const Index = ({ footer }) => {
           <></>
           :
           <>
-            <Button text={"Serviços"} onClickHandle={redirect} toggle={toggleMenu}/>
-            <Button text={"Cases"} onClickHandle={redirect} />
-            <Button text={"InCompany"} onClickHandle={redirect} />
+            <Button text={"Serviços"} onClickHandle={redirect} toggle={toggleMenu} inCompany={(pathname == '/incompany' ? true : false)}/>
+            <Button text={"Cases"} onClickHandle={redirect} inCompany={(pathname == '/incompany' ? true : false)}/>
+            <Button text={"InCompany"} onClickHandle={redirect} inCompany={(pathname == '/incompany' ? true : false)}/>
 
             {
               footer ? 
-              <Button text={"Contato"} onClickHandle={redirect} />
+              <Button text={"Contato"} onClickHandle={redirect} inCompany={(pathname == '/incompany' ? true : false)}/>
               :
               <Button2 text={"Contato"} onClickHandle={redirect} footer={footer} inCompany={(pathname == '/incompany' ? true : false)}/>
             }

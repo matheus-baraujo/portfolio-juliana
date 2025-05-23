@@ -1,3 +1,5 @@
+'use client'
+
 import React from 'react'
 import styles from './styles.module.css'
 
@@ -15,7 +17,7 @@ const index = () => {
       <div className={styles.cta}>
         <p>Vídeos com estratégia, criatividade e velocidade</p>
         <h2>Crio conteúdo mobile com cara de agora, mas pensado pra durar</h2>
-        <button>Ver Trabalhos</button>
+        <button onClick={() => {window.location.href = '/cases'}}>Ver Trabalhos</button>
       </div>
 
       <video className={styles.bigVideo} src="videos/exampleHome.mp4" autoPlay loop muted></video>

@@ -82,9 +82,11 @@
 } */
 
 
-.btn:hover{
+.btn:hover, .btn.inCompany:hover{
   scale: .95;
-  opacity: .8;
+  /* opacity: .8; */
+  background-color: var(--accent);
+  color: white;
 }
 /* 
 .btnFooter:hover{
