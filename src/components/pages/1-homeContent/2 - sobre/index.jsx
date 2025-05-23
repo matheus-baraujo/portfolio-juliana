@@ -5,7 +5,7 @@ const index = () => {
   return (
     <div className={styles.container}>
       <div className={styles.title}>
-        <img src="logos/logoSobre.png" alt="logo" />
+        <img src="logos/logoSobre.svg" alt="logo" />
         <h2>Juliana Ilha</h2>
       </div>
       <h2 className={styles.subtitle}>Sou mente engenheira e alma comunicadora.</h2>
@@ -24,7 +24,7 @@ const index = () => {
           
           <div className={styles.imgContainer}>
             <img src="imagens/sobre2.png" alt="Foto Juliana 2" />
-            <img className={styles.logoSobre2} src="logos/logoSobre2.png" alt="logo" />
+            <img className={styles.logoSobre2} src="logos/logoSobre2.svg" alt="logo" />
           </div>
           
         </div>

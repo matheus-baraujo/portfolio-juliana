@@ -34,7 +34,7 @@ const index = () => {
         <div className={styles.ctaText}>
           <h2>InCompany</h2>
           <h3>Workshop de <br/> <span>Criação de Vídeos</span></h3>
-          <p>por <img src="logos/logoIncompany.png" alt="" /></p>
+          <p>por <img src="logos/logoIncompany.svg" alt="logo" /></p>
         </div>
       </div>
 
@@ -47,17 +47,17 @@ const index = () => {
             <div className={styles.info}>
 
               <div className={styles.item}>
-                <img src="icons/star2.png" alt="" />
+                <img src="icons/star2.svg" alt="" />
                 <p>7h de aulas e exercícios práticos</p>
               </div>
 
               <div className={styles.item}>
-                <img src="icons/star2.png" alt="" />
+                <img src="icons/star2.svg" alt="" />
                 <p>Mais autonomia para o seu time criar no dia a dia</p>
               </div>
 
               <div className={styles.item}>
-                <img src="icons/star2.png" alt="" />
+                <img src="icons/star2.svg" alt="" />
                 <p>Templates para organizar a sua criação</p>
               </div>
 

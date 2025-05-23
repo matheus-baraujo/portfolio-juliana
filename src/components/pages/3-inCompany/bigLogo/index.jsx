@@ -5,7 +5,7 @@ const index = () => {
   return (
     <div className={styles.row}>
       <h2>Paixão <br /> por <br /> criar</h2>
-      <img src="logos/logoBig.png" alt="" />
+      <img src="logos/logoBig.svg" alt="" />
 
       <div className={styles.bg}></div>
 

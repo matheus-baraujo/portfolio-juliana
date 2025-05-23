@@ -3,7 +3,7 @@ import styles from './styles.module.css'
 
 const index = ({number, titulo, texto, url}) => {
 
-  var img = 'icons/icon'+(number+1)+'.png'
+  var img = 'icons/icon'+(number+1)+'.svg'
 
   return (
     <div className={styles.container}>

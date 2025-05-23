@@ -26,10 +26,10 @@ const Index = ({ footer }) => {
 
   return (
     <div className={ (pathname == '/incompany' ? styles.navbar+' '+styles.inCompany : styles.navbar)}>
-      <img className={styles.logoMobile} src="/logos/logoMenu.png" alt="logo" onClick={() => window.location.href = '/' }/>
+      <img className={styles.logoMobile} src="/logos/logoMenu.svg" alt="logo" onClick={() => window.location.href = '/' }/>
 
       <div className={styles.menu} ref={menuRef}>
-        <img className={styles.logo} src="/logos/logoMenu.png" alt="logo" onClick={() => window.location.href = '/' }/>
+        <img className={styles.logo} src="/logos/logoMenu.svg" alt="logo" onClick={() => window.location.href = '/' }/>
 
         {
           pathname == '/administrator' ?

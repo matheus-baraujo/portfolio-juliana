@@ -28,7 +28,7 @@ const index = ({odd, number, title, items}) => {
     {
       odd ? 
       <>
-        <img className={styles.star +' '+ styles.star1} src="icons/star.png" alt="" />
+        <img className={styles.star +' '+ styles.star1} src="icons/star.svg" alt="" />
 
         <div className={styles.col}>
           <Title2 minor={title[0]} major={title[1]} span={title[2]}/>
@@ -41,7 +41,7 @@ const index = ({odd, number, title, items}) => {
                 items.map((item, index) => {
                   return(
                     <div className={styles.item} key={index}>
-                      <img src="icons/star2.png" alt="" />
+                      <img src="icons/star2.svg" alt="" />
                       <p>{item}</p>
                     </div>
                   )
@@ -73,7 +73,7 @@ const index = ({odd, number, title, items}) => {
                 items.map((item, index) => {
                   return(
                     <div className={styles.item} key={index}>
-                      <img src="icons/star2.png" alt="" />
+                      <img src="icons/star2.svg" alt="" />
                       <p>{item}</p>
                     </div>
                   )
@@ -86,7 +86,7 @@ const index = ({odd, number, title, items}) => {
       </> 
       : 
       <>
-        <img className={styles.star +' '+ styles.star2} src="icons/star.png" alt="" />
+        <img className={styles.star +' '+ styles.star2} src="icons/star.svg" alt="" />
     
         <div className={styles.col}>
 
@@ -100,7 +100,7 @@ const index = ({odd, number, title, items}) => {
                 items.map((item, index) => {
                   return(
                     <div className={styles.item} key={index}>
-                      <img src="icons/star2.png" alt="" />
+                      <img src="icons/star2.svg" alt="" />
                       <p>{item}</p>
                     </div>
                   )
@@ -123,7 +123,7 @@ const index = ({odd, number, title, items}) => {
                 items.map((item, index) => {
                   return(
                     <div className={styles.item} key={index}>
-                      <img src="icons/star2.png" alt="" />
+                      <img src="icons/star2.svg" alt="" />
                       <p>{item}</p>
                     </div>
                   )
