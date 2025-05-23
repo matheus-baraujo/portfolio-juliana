@@ -23,7 +23,7 @@
 }
 
 .logo{
-  height: 70px;
+  width: 280px;
 }
 
 .logo:hover{
@@ -89,7 +89,7 @@
 
   .logoMobile{
     display: block;
-    height: 90%;
+    width: 200px;
     margin-left: 20px;
     
   }

@@ -11,29 +11,38 @@ import Services from '@/components/pages/1-homeContent/4 - services'
 import Reviews from '@/components/pages/1-homeContent/5 - reviews'
 
 const index = () => {
+
+  var cta = "Vídeos com estratégia,\ncriatividade e\n velocidade"
+
+
   return (
-    <div className={styles.container}>
-      
+
+    <>
       <div className={styles.cta}>
-        <p>Vídeos com estratégia, criatividade e velocidade</p>
-        <h2>Crio conteúdo mobile com cara de agora, mas pensado pra durar</h2>
+        <p>{cta}</p>
+        <h2>Crio conteúdo mobile com cara <br /> de agora, mas pensado pra durar</h2>
         <button onClick={() => {window.location.href = '/cases'}}>Ver Trabalhos</button>
       </div>
 
       <video className={styles.bigVideo} src="videos/exampleHome.mp4" autoPlay loop muted></video>
 
-      <SliderMarcas />
+      <div className={styles.container}>
+        
+        
 
-      <Cta2 />
+        <SliderMarcas />
 
-      <Sobre />
-      
-      <Cases />
+        <Sobre />
 
-      <Services />
+        <Cta2 />
 
-      <Reviews />
-    </div>
+        <Cases />
+
+        <Services />
+
+        <Reviews />
+      </div>
+    </>
   )
 }
 

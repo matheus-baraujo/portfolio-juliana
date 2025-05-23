@@ -17,17 +17,11 @@ const index = () => {
 
   return (
     <div className={styles.container} id='services'>
-      
-      <div className={styles.borderTop}> </div>
-      <div className={styles.borderBottom}> </div>
 
-      <div className={styles.col1}>
+      <div className={styles.col}>
         <StickyBox offsetTop={100} offsetBottom={20}>
           <h2>Como posso impulsionar suas ideias?</h2>
         </StickyBox>
-      </div>
-
-      <div className={styles.col2}>
 
         {
           cards.map((card, index) => {

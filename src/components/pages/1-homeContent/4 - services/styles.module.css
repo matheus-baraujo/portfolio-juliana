@@ -5,48 +5,26 @@
   align-items: flex-start; /* importante */
 }
 
-.borderTop{
-  position: absolute;
-  top: 0px;
-  left: calc((1250px - 100vw) / 2);
-  width: 100vw;
-  height: 2px;
-  background-color: var(--accent);
-}
 
-.borderBottom{
-  position: absolute;
-  bottom: 0px;
-  left: calc((1250px - 100vw) / 2);
-  width: 100vw;
-  height: 2px;
-  background-color: var(--accent);
-}
-
-.col1, .col2{
-  width: 50%;
+.col{
+  width: 100%;
   display: flex;
   flex-direction: column;
 }
 
-.col1{
+.col{
   padding-top: 10px;
   position: relative;
   height: auto;
 }
 
-.col1 h2{
-  width: 375px;
+.col h2{
   font-size: 48px;
   font-weight: bold;
   font-family: var(--font-black-mango);
   color: var(--highlight);
 }
 
-
-.col2{
-  border-left: 2px solid var(--accent);
-}
 
 @media screen and (max-width: 768px) {
   .container{
@@ -57,13 +35,13 @@
     display: none;
   }
 
-  .col1, .col2{
+  .col{
     width: 100%;
     padding: 0px;
     border: none;
   }
 
-  .col1 h2{
+  .col h2{
     width: 80%;
     font-size: 22px;
     color: var(--text);

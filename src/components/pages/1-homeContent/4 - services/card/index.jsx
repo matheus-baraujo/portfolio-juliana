@@ -14,10 +14,12 @@ const index = ({number, titulo, texto, url}) => {
           <span>0{number+1}</span> {titulo}
         </div>
         <p>{texto}</p>
-        <button>Ver case</button>
+
+        <button className={styles.btnMobile}>Ver case</button>
+        
       </div>
 
-      <div className={styles.borderBottom}> </div>
+      <button className={styles.btn}>Ver case</button>
 
     </div>
   )

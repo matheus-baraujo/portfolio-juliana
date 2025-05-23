@@ -6,59 +6,71 @@
   display : flex;
   flex-direction: row;
   align-items: center;
-  gap: 15px;
+
+  margin-bottom: 45px;
 
   font-size: 48px;
   font-weight: 400;
   font-family: var(--font-black-mango);
   color: var(--text);
 }
-
-.title h2{
-  margin: 0;
-}
-
 .subtitle{
-  font-size: 36px;
-  font-family: var(--font-black-mango);
-  color: var(--highlight);
-  margin: 0;
+  position: relative;
+  text-align: center;
+}
+.aspas1,.aspas2{
+  position: absolute;
+  top: -10px;
+}
+.aspas1{
+  left: 20px;
+}
+.aspas2{
+  transform: rotateY(180deg);
+  right: 20px;
 }
 
 .content{
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  gap: 70px;
 }
-
 .col{
-  width: 580px;
+  width: calc(50% - 35px);
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 50px;
 }
-
 .col p{
+  margin: 0px;
   font-size: 36px;
   font-family: var(--font-montserrat);
   color: var(--highlight);
 }
-
 .col h2{
+  margin: 0px;
   font-size: 36px;
   font-family: var(--font-black-mango);
   color: var(--highlight);
   font-weight: bold;
 }
 
+.col.col2{
+  gap: 40px;
+  justify-content: space-between;
+}
+
 .imgContainer{
   position: relative;
 }
-
+.imgContainer .foto{
+  width: 100%;
+}
 .logoSobre2{
   position: absolute;
-  bottom: 50px;
-  left: -100px;
+  top: 50px;
+  right: -50px;
   width: 170px;
   height: 170px;
   padding: 15px;
@@ -72,46 +84,63 @@
   }
 
   .title{
-    font-size: 22px;
+    margin-bottom: 20px;
   }
-
   .title img{
-    width: 40px;
-    height: 40px;
+    width: 80px;
+    height: auto;
   }
-
   .subtitle{
     font-size: 14px;
   }
+  
+  .aspas1, .aspas2{
+    width: 20px;
+    top: -5px;
+  }
+  .aspas1{
+    left: 70px;
+  }
+  .aspas2{
+    right: 70px;
+  }
 
   .content{
-    gap: 10px;
+    gap: 15px;
+    flex-wrap: wrap;
   }
-
   .col{
-    width: 50%;
+    width: 100%;
     gap: 10px;
   }
-
   .col p, .col h2{
     font-size: 14px;
   }
-
   .col h2{
     margin: 0;
   }
-
-  .col img{
+  .col .foto{
     width: 100%;
     height: auto;
   }
+  .col.col2{
+    gap: 10px;
+  }
+  
 
+  .imgContainer{
+    display: flex;
+  }
+  .imgContainer .foto{
+    width: 60%;
+    margin: 0px auto;
+  }
   .imgContainer .logoSobre2{
-    left: -30px;
-    width: 60px;
-    height: 60px;
+    right: 60px;
+    width: 40px;
+    height: 40px;
     padding: 10px;
-    bottom: -25px;
+    top: -10px;
   }
   
 }
