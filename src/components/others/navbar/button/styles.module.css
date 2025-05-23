@@ -75,12 +75,24 @@
 
 /* hover */
 
-.btn:hover, .btn.inCompany:hover span{
+.btn:hover{
   scale: 1.05;
   /* background-color: var(--highlight);
   color: white; */
   color: var(--accent);
   font-weight: 600;
+}
+
+.btn, .btn.inCompany{
+  transition: ease-in-out .3s;
+}
+
+.btn.inCompany:hover span{
+  scale: 1.05;
+  /* background-color: var(--highlight);
+  color: white; */
+  color: var(--inCompanyText);
+  font-weight: bold;
 }
 
 
