@@ -43,12 +43,13 @@
 
 .star1{
   top: -231px;
-  right: -413px;
+  right: -21px;
 }
 
 .star2{
   top: -231px;
-  left: -412px;
+  left: -22px;
+  transform: rotate(180deg);
 }
 
 @media screen and (max-width: 768px) {
