@@ -31,7 +31,7 @@ const index = () => {
   return (
     <div className={styles.row}>
 
-      <img className={styles.star} src="icons/star.svg" alt="" />
+      <img className={styles.star} src="icons/star3.svg" alt="" />
 
 
       {
