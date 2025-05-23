@@ -6,7 +6,7 @@ const index = () => {
     <div className={styles.container}>
         <div className={styles.text}>
           <h3>Workshop de <br/> <span>Criação de Vídeos</span></h3>
-          <p>por <img src="logos/logoIncompany.png" alt="" /></p>
+          <p>por <img src="logos/logoIncompany.svg" alt="" /></p>
         </div>
       </div>
   )
