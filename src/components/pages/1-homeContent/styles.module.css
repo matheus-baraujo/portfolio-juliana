@@ -26,6 +26,14 @@
   margin-bottom: 10px;
 }
 
+
+.cta .desktop{
+  display: block;
+}
+.cta .mobile{
+  display: none;
+}
+
 .cta p{
   background-color: var(--text);
   color: var(--bg);
@@ -78,17 +86,24 @@
     flex-direction: column;
   }
   .cta h2{
-    font-size: 29px;
+    font-size: 24px;
   }
+
+  .cta .desktop{
+    display: none;
+  }
+  .cta .mobile{
+    display: block;
+  }
+
   .cta p{
     white-space: pre;
-    font-size: 28px;
+    font-size: 24px;
     padding: 5px;
-    border-radius: 12px;
     width: calc(100% - 10px);
   }
   .cta button{
-    margin-top: 20px;
+    margin-top: 200px;
     font-size: 16px;
     padding: 8px 12px;
   }

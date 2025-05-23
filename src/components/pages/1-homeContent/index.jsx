@@ -12,7 +12,7 @@ import Reviews from '@/components/pages/1-homeContent/5 - reviews'
 
 const index = () => {
 
-  var cta = "Vídeos com estratégia,\ncriatividade e\n velocidade"
+  var cta = "Vídeos com estratégia,\ncriatividade e velocidade"
 
 
   return (
@@ -20,7 +20,8 @@ const index = () => {
     <>
       <div className={styles.cta}>
         <p>{cta}</p>
-        <h2>Crio conteúdo mobile com cara <br /> de agora, mas pensado pra durar</h2>
+        <h2 className={styles.desktop}>Crio conteúdo mobile com cara <br /> de agora, mas pensado pra durar</h2>
+        <h2 className={styles.mobile}>Crio conteúdo mobile <br /> com cara  de agora, <br /> mas pensado pra durar</h2>
         <button onClick={() => {window.location.href = '/cases'}}>Ver Trabalhos</button>
       </div>
 
