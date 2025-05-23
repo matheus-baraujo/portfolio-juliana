@@ -11,6 +11,11 @@ import Navbar from '@/components/others/navbar'
 
 import { usePathname } from 'next/navigation';
 
+function topFunction() {
+  document.body.scrollTop = 0; // For Safari
+  document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+}
+
 const index = () => {
 
   const pathname = usePathname();
@@ -67,7 +72,7 @@ const index = () => {
             </div>
 
 
-            <button className={styles.top}>Voltar ao topo</button>
+            <button className={styles.top} onClick={()=>{topFunction()}}>Voltar ao topo</button>
           </div>
       }
 
