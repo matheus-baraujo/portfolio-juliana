@@ -17,6 +17,7 @@
 
 .carouselItem img {
   height: 60px;
+  filter: brightness(3);
   object-fit: contain;
 }
 

@@ -3,12 +3,18 @@ import React from 'react';
 import styles from './styles.module.css';
 
 const marcas = [
-  '/marcas/marca.png',
-  '/marcas/marca1.png',
-  '/marcas/marca2.png',
-  '/marcas/marca3.png',
-  '/marcas/marca4.png',
-  '/marcas/marca5.png',
+  '/marcas/marca (1).svg',
+  '/marcas/marca (2).svg',
+  '/marcas/marca (3).svg',
+  '/marcas/marca (4).svg',
+  '/marcas/marca (5).svg',
+  '/marcas/marca (6).svg',
+  '/marcas/marca (7).svg',
+  '/marcas/marca (8).svg',
+  '/marcas/marca (9).svg',
+  '/marcas/marca (10).svg',
+  '/marcas/marca (11).svg',
+  '/marcas/marca (12).svg',
   // repita se quiser mais fluidez
 ];
 
