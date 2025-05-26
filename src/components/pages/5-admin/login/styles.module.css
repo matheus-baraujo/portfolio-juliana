@@ -153,3 +153,31 @@
 .loginBox button:hover {
   background-color: var(--accent);
 }
+
+
+@media screen and (max-width: 768px) {
+
+  .containerLogin{
+    padding: 20px;
+  }
+
+  .title h2{
+    font-size: 35px;
+  }
+  .title img{
+    width: 46px;
+    height: 41px;
+  }
+
+
+  .loginBox{
+    width: calc(100% - 20px);
+    padding: 36px 10px;
+
+    border: none;
+    border-top: 1px solid var(--text);
+    border-radius: 0%;
+    box-shadow: none;
+  }
+  
+}

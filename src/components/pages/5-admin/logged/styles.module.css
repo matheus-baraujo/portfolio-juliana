@@ -1,0 +1,87 @@
+.container{
+  display: flex;
+  flex-direction: column;
+  gap: 80px;
+
+  position: relative;
+}
+
+.title h2{
+  font-family: var(--font-black-mango);
+  font-size: 36px;
+  font-weight: bold;
+  color: var(--text);
+  margin: 0;
+}
+.title p, .selector p{
+  font-family: var(--font-montserrat);
+  font-size: 20px;
+  color: var(--highlight);
+  margin: 0%;
+}
+
+.container .logout{
+  position: absolute;
+  top: 0;
+  right: 0;
+  font-size: 20px;
+  background-color: var(--highlight);
+}
+
+.selector{
+  width: 600px;
+  display: flex;
+  flex-direction: column;
+  gap: 45px;
+}
+.selector > *{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.selector button, .logout{
+  padding: 15px;
+  color: var(--bg);
+  font-size: 24px;
+  font-weight: 600;
+  font-family: var(--font-montserrat);
+  border-radius: 100px;
+  background-color: var(--text);
+  border: none;
+  transition: ease-in-out .3s;
+}
+.selector button:hover, .container .logout:hover{
+  background-color: var(--accent);
+}
+
+@media screen and (max-width: 768px) {
+
+  .container{
+    padding: 90px 20px;
+    gap: 45px;
+  }
+
+  .title{
+    text-align: center;
+    border-bottom: 1px solid var(--text);
+    padding-bottom: 40px;
+  }
+  .title h2{
+    font-size: 36px;
+  }
+  
+  .selector{
+    width: 100%;
+  }
+  .selector button, .logout{
+    font-size: 14px;
+  }
+  .selector p, .container .logout{
+    font-size: 12px;
+  }
+
+  .container .logout{
+    right: 20px;
+  }
+}

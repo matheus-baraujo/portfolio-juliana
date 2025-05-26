@@ -8,7 +8,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser, faLock, faEyeSlash, faEye } from '@fortawesome/free-solid-svg-icons';
 
 
-const index = () => {
+const index = ({login}) => {
 
   const [show, setShow] = useState(false);
 
@@ -28,8 +28,6 @@ const index = () => {
           <p>Entre com suas credenciais</p>
         </div>
         
-
-
         <div className={styles.input}>
           <label htmlFor="email">Email</label>
 
