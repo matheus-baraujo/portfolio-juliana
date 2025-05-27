@@ -14,9 +14,20 @@ import 'slick-carousel/slick/slick-theme.css';
 const index = ({projeto, direction, home}) => {
 
   const [isClient, setIsClient] = useState(false);
+  const [titulo, setTitulo] = useState();
+  const [texto, setTexto] = useState();
 
   useEffect(() => {
     setIsClient(true);
+
+    if (home) {
+      setTitulo(projeto?.texto1);
+      setTexto(projeto?.texto2);
+    } else {
+      setTitulo(projeto?.titulo);
+      setTexto(projeto?.texto);
+    }
+
   }, []);
 
   const isMobile = useMediaQuery({ maxWidth: 768 });
@@ -33,21 +44,14 @@ const index = ({projeto, direction, home}) => {
 
   if (!isClient) return null; // Evita render no SSR
 
-  const videoList = Array.isArray(projeto?.videos) ? projeto.videos : [];
-
-  // Corrigir a string para JSON válido
-  const jsonString = projeto.videos.replace(/([{,]\s*)(\w+)\s*:/g, '$1"$2":'); // coloca aspas nas chaves
-
-  const array = JSON.parse(jsonString);
-
-  console.log("Video List:", array);
+  const videoList = JSON.parse(projeto?.videos);
 
   return (
     <div className={ direction ? styles.case : styles.case2}>
       
       <div className={ home ? styles.infoHome : styles.info}>
-        <h2>{projeto?.texto1}</h2>
-        <p>{projeto?.texto2}</p>
+        <h2>{titulo}</h2>
+        <p>{texto}</p>
       </div>
       
       {
@@ -56,8 +60,11 @@ const index = ({projeto, direction, home}) => {
             <Slider {...settings}>
               {
                 videoList.map((item, index) => {
+
+                  var url = "http://localhost:3000/videos/" + item.name;
+
                   return (
-                    <VideoCase video={item} key={index}/>
+                    <VideoCase video={url} key={index}/>
                   )
                 })
               }
@@ -65,8 +72,11 @@ const index = ({projeto, direction, home}) => {
           </div>
         :
           videoList.map((item, index) => {
+
+            var url = "http://localhost:3000/videos/" + item.name;
+
             return (
-              <VideoCase video={item} key={index}/>
+              <VideoCase video={url} key={index}/>
             )
           })
 

@@ -19,7 +19,7 @@ try {
     $pdo = new PDO($dsn, $user, $pass, $options);
 
     // Supondo que você só vai ter 2 entradas, e quer pegar todas
-    $stmt = $pdo->query("SELECT id, texto1, texto2, videos FROM caseshome");
+    $stmt = $pdo->query("SELECT id, titulo, texto, videos FROM cases");
     $result = $stmt->fetchAll();
 
     header('Content-Type: application/json');

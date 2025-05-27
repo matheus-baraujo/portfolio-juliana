@@ -6,22 +6,16 @@ import Case from '@/components/others/case'
 
 const index = () => {
 
-  const cases = [ ['Título do trabalho executado', 
-                  'Lorem ipsum dolor sit amet consectetur. Nisi diam vel eleifend malesuada turpis. Viverra ut metus arcu pulvinar nisi id tellus. Arcu habitant elementum lorem erat. Congue tristique vel suspendisse eu elit blandit sed nibh.', 
-                  ['videos/example (1).mp4', 'videos/example (2).mp4', 'videos/example (3).mp4']], 
-                  ['Título do trabalho executado', 
-                  'Lorem ipsum dolor sit amet consectetur. Nisi diam vel eleifend malesuada turpis. Viverra ut metus arcu pulvinar nisi id tellus. Arcu habitant elementum lorem erat. Congue tristique vel suspendisse eu elit blandit sed nibh.', 
-                  ['videos/example (1).mp4', 'videos/example (2).mp4', 'videos/example (3).mp4']], 
-                  ['Título do trabalho executado', 
-                  'Lorem ipsum dolor sit amet consectetur. Nisi diam vel eleifend malesuada turpis. Viverra ut metus arcu pulvinar nisi id tellus. Arcu habitant elementum lorem erat. Congue tristique vel suspendisse eu elit blandit sed nibh.', 
-                  ['videos/example (1).mp4', 'videos/example (2).mp4', 'videos/example (3).mp4']],
-                  ['Título do trabalho executado', 
-                  'Lorem ipsum dolor sit amet consectetur. Nisi diam vel eleifend malesuada turpis. Viverra ut metus arcu pulvinar nisi id tellus. Arcu habitant elementum lorem erat. Congue tristique vel suspendisse eu elit blandit sed nibh.', 
-                  ['videos/example (1).mp4', 'videos/example (2).mp4', 'videos/example (3).mp4']], 
-                  ['Título do trabalho executado', 
-                  'Lorem ipsum dolor sit amet consectetur. Nisi diam vel eleifend malesuada turpis. Viverra ut metus arcu pulvinar nisi id tellus. Arcu habitant elementum lorem erat. Congue tristique vel suspendisse eu elit blandit sed nibh.', 
-                  ['videos/example (1).mp4', 'videos/example (2).mp4', 'videos/example (3).mp4']]
-                ]
+  const [sections, setSections] = useState([]);
+  
+  useEffect(() => {
+    fetch("http://localhost/api/getCases.php")
+      .then(res => res.json())
+      .then(data => {
+        setSections(data); // Supondo que você use: const [sections, setSections] = useState([]);
+      })
+      .catch(err => console.error("Erro ao buscar seções:", err));
+  }, []);
 
   const [visibleCases, setVisibleCases] = useState(2)
   const sentinelRef = useRef(null)
@@ -32,7 +26,7 @@ const index = () => {
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          setVisibleCases(prev => (prev < cases.length ? prev + 1 : prev))
+          setVisibleCases(prev => (prev < sections.length ? prev + 1 : prev))
         }
       },
       {
@@ -49,7 +43,7 @@ const index = () => {
         observer.unobserve(sentinelRef.current)
       }
     }
-  }, [cases.length])
+  }, [sections.length])
 
   return (
     <div className={styles.container}>
@@ -60,7 +54,7 @@ const index = () => {
       </div>
 
       {
-        cases.slice(0, visibleCases).map((item, index) => {
+        sections.slice(0, visibleCases).map((item, index) => {
           return (
             <Case key={index} projeto={item} direction={index%2 == 0 ? true : false} home={false}/>
           )
