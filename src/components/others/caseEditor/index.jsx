@@ -8,9 +8,24 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFloppyDisk, faUpload, faTrash, faArrowUp, faArrowDown, faEdit, faCancel } from '@fortawesome/free-solid-svg-icons';
 
 const VideoItem = ({ id, name, onRemove, onMoveUp, onMoveDown, isFirst, isLast, editable }) => {
+
+  const [useTempPath, setUseTempPath] = useState(false);
+
+  const videoSrc = useTempPath
+    ? `${process.env.NEXT_PUBLIC_URL}/uploads/temp/${name}`
+    : `${process.env.NEXT_PUBLIC_URL}/videos/${name}`;
+
+  const handleVideoError = () => {
+    if (!useTempPath) {
+      setUseTempPath(true);
+    }else{
+      setUseTempPath(false);
+    }
+  };
+
   return (
     <div className={styles.videoItem}>
-      <video src={`videos/${name}`} />
+      <video src={videoSrc} onError={handleVideoError} />
       <p className={styles.videoName}>{name}</p>
       {editable && (
         <div className={styles.buttonsContainer}>
@@ -43,10 +58,13 @@ const VideoItem = ({ id, name, onRemove, onMoveUp, onMoveDown, isFirst, isLast, 
   );
 };
 
-const Index = ({ txt, txt2, videos, setText, setText2, setarVideos }) => {
+const Index = ({ number, txt, txt2, videos, setText, setText2, setarVideos }) => {
   const [editable, setEditable] = useState(false);
   const [localVideos, setLocalVideos] = useState(videos);      // vídeos que o usuário está editando
   const [originalVideos, setOriginalVideos] = useState(videos); // cópia para restaurar se cancelar
+
+  const [id, setId] = useState(number);
+
   const [localTxt, setLocalTxt] = useState(txt);
   const [localTxt2, setLocalTxt2] = useState(txt2);
   const [originalTxt, setOriginalTxt] = useState(txt);
@@ -70,7 +88,7 @@ const Index = ({ txt, txt2, videos, setText, setText2, setarVideos }) => {
     formData.append('video', file);
 
     try {
-      const res = await fetch("http://localhost/api/upload-temp-video.php", {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_URL}/api/upload-temp-video.php`, {
         method: "POST",
         body: formData,
       });
@@ -138,11 +156,10 @@ const Index = ({ txt, txt2, videos, setText, setText2, setarVideos }) => {
 
   // Salvar alterações: move arquivos temporários para permanentes via API e atualiza estado pai
   const handleSave = async () => {
-    // Filtra só vídeos temporários
     const tempVideos = localVideos.filter(v => v.temp).map(v => v.name);
 
     if (tempVideos.length > 0) {
-      const res = await fetch('/api/move-temp-videos.php', {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_URL}/api/move-temp-videos.php`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ videos: tempVideos }),
@@ -154,8 +171,27 @@ const Index = ({ txt, txt2, videos, setText, setText2, setarVideos }) => {
       }
     }
 
-    // Atualiza o estado pai e remove flag temp
     const finalVideos = localVideos.map(v => ({ id: v.id, name: v.name }));
+
+    const res = await fetch(`${process.env.NEXT_PUBLIC_URL}/api/update-case-line.php`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        id: id, // substitua por props.id se necessário
+        text1: localTxt,
+        text2: localTxt2,
+        videos: finalVideos,
+      }),
+    });
+
+    
+
+    const data = await res.json();
+    if (!data.success) {
+      alert('Erro ao atualizar banco de dados');
+      return;
+    }
+
     setarVideos(finalVideos);
     setText(localTxt);
     setText2(localTxt2);
@@ -167,7 +203,7 @@ const Index = ({ txt, txt2, videos, setText, setText2, setarVideos }) => {
     const tempVideos = localVideos.filter(v => v.temp).map(v => v.name);
 
     if (tempVideos.length > 0) {
-      await fetch('/api/delete-temp-videos.php', {
+      await fetch(`${process.env.NEXT_PUBLIC_URL}/api/delete-temp-videos.php`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ videos: tempVideos }),
@@ -195,7 +231,7 @@ const Index = ({ txt, txt2, videos, setText, setText2, setarVideos }) => {
 
   return (
     <div className={styles.editorContainer}>
-      <h2 className={styles.editorTitle}>Linha 1</h2>
+      <h2 className={styles.editorTitle}>Linha {number}</h2>
 
       <div className={styles.editorSection}>
         <label className={styles.editorLabel}>Texto 1</label>

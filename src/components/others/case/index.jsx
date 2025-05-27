@@ -61,7 +61,7 @@ const index = ({projeto, direction, home}) => {
               {
                 videoList.map((item, index) => {
 
-                  var url = "http://localhost:3000/videos/" + item.name;
+                  var url = process.env.NEXT_PUBLIC_URL + "/videos/" + item.name;
 
                   return (
                     <VideoCase video={url} key={index}/>
@@ -73,7 +73,7 @@ const index = ({projeto, direction, home}) => {
         :
           videoList.map((item, index) => {
 
-            var url = "http://localhost:3000/videos/" + item.name;
+            var url = process.env.NEXT_PUBLIC_URL + "/videos/" + item.name;
 
             return (
               <VideoCase video={url} key={index}/>

@@ -9,7 +9,7 @@ const index = () => {
   const [sections, setSections] = useState([]);
   
   useEffect(() => {
-    fetch("http://localhost/api/getCases.php")
+    fetch(`${process.env.NEXT_PUBLIC_URL}/api/getCases.php`)
       .then(res => res.json())
       .then(data => {
         setSections(data); // Supondo que você use: const [sections, setSections] = useState([]);

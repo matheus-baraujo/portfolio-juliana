@@ -133,6 +133,11 @@
   flex: 1;
   font-family: var(--font-montserrat);
   color: var(--bg);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  max-width: 200px;
 }
 .deleteButton {
   background: transparent;

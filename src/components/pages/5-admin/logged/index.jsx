@@ -14,8 +14,6 @@ const index = ({logged, logout}) => {
   // 0 home - 1 home content - 2 cases content
   const [selector, setSelector] = useState(0);
 
-  useEffect(() => { console.log(selector)}, [selector]);
-
   return (
     <div className={styles.container}>
       
