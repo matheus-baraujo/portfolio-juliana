@@ -12,7 +12,9 @@ import { faHouse, faSuitcase } from '@fortawesome/free-solid-svg-icons';
 const index = ({logged, logout}) => {
 
   // 0 home - 1 home content - 2 cases content
-  const [selector, setSelector] = useState(1);
+  const [selector, setSelector] = useState(0);
+
+  useEffect(() => { console.log(selector)}, [selector]);
 
   return (
     <div className={styles.container}>
@@ -27,12 +29,12 @@ const index = ({logged, logout}) => {
 
           <div className={styles.selector}>
             <div>
-              <button><FontAwesomeIcon icon={faHouse} className={'fas fa-house'} /> Home</button>
+              <button onClick={() => setSelector(1)}><FontAwesomeIcon icon={faHouse} className={'fas fa-house'}/> Home</button>
               <p>Gerencie conteúdos da página principal</p>
             </div>
 
             <div>
-              <button><FontAwesomeIcon icon={faSuitcase} className={'fas fa-suitcase'} /> Cases</button>
+              <button  onClick={() => setSelector(2)}><FontAwesomeIcon icon={faSuitcase} className={'fas fa-suitcase'}/> Cases</button>
               <p>Gerencie conteúdos da página de cases</p>
             </div>
 
@@ -48,8 +50,17 @@ const index = ({logged, logout}) => {
 
 
       
+      <div className={styles.returnContainer}>
 
-      <button className={styles.logout}>Logout</button>
+        {
+          selector != 0 ?
+          <button className={styles.return} onClick={() => setSelector(0)}>Voltar</button>
+          :
+          <></>
+        }
+        
+        <button className={styles.logout}>Logout</button>
+      </div>
 
     </div>
   )

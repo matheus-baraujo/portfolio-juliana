@@ -33,14 +33,21 @@ const index = ({projeto, direction, home}) => {
 
   if (!isClient) return null; // Evita render no SSR
 
-  const videoList = Array.isArray(projeto?.[2]) ? projeto[2] : [];
+  const videoList = Array.isArray(projeto?.videos) ? projeto.videos : [];
+
+  // Corrigir a string para JSON válido
+  const jsonString = projeto.videos.replace(/([{,]\s*)(\w+)\s*:/g, '$1"$2":'); // coloca aspas nas chaves
+
+  const array = JSON.parse(jsonString);
+
+  console.log("Video List:", array);
 
   return (
     <div className={ direction ? styles.case : styles.case2}>
       
       <div className={ home ? styles.infoHome : styles.info}>
-        <h2>{projeto?.[0]}</h2>
-        <p>{projeto?.[1]}</p>
+        <h2>{projeto?.texto1}</h2>
+        <p>{projeto?.texto2}</p>
       </div>
       
       {

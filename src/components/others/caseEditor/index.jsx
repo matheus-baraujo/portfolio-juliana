@@ -1,34 +1,196 @@
-'use client'
+'use client';
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from 'react';
 import styles from './styles.module.css';
 
-import { ReactSortable } from "react-sortablejs";
-import { useDropzone } from "react-dropzone";
+import { useDropzone } from 'react-dropzone';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faFloppyDisk, faUpload, faTrash, faArrowUp, faArrowDown, faEdit, faCancel } from '@fortawesome/free-solid-svg-icons';
 
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faFloppyDisk, faUpload, faTrash} from '@fortawesome/free-solid-svg-icons';
+const VideoItem = ({ id, name, onRemove, onMoveUp, onMoveDown, isFirst, isLast, editable }) => {
+  return (
+    <div className={styles.videoItem}>
+      <video src={`videos/${name}`} />
+      <p className={styles.videoName}>{name}</p>
+      {editable && (
+        <div className={styles.buttonsContainer}>
+          <button 
+            className={styles.moveButton} 
+            onClick={() => onMoveUp(id)} 
+            disabled={isFirst}
+            title="Subir"
+          >
+            <FontAwesomeIcon icon={faArrowUp} />
+          </button>
+          <button 
+            className={styles.moveButton} 
+            onClick={() => onMoveDown(id)} 
+            disabled={isLast}
+            title="Descer"
+          >
+            <FontAwesomeIcon icon={faArrowDown} />
+          </button>
+          <button 
+            className={styles.deleteButton} 
+            onClick={() => onRemove(id)} 
+            title="Remover"
+          >
+            <FontAwesomeIcon icon={faTrash} />
+          </button>
+        </div>
+      )}
+    </div>
+  );
+};
 
+const Index = ({ txt, txt2, videos, setText, setText2, setarVideos }) => {
+  const [editable, setEditable] = useState(false);
+  const [localVideos, setLocalVideos] = useState(videos);      // vídeos que o usuário está editando
+  const [originalVideos, setOriginalVideos] = useState(videos); // cópia para restaurar se cancelar
+  const [localTxt, setLocalTxt] = useState(txt);
+  const [localTxt2, setLocalTxt2] = useState(txt2);
+  const [originalTxt, setOriginalTxt] = useState(txt);
+  const [originalTxt2, setOriginalTxt2] = useState(txt2);
 
-const index = ({ txt, txt2, videos, setText, setText2, setarVideos }) => {
+  useEffect(() => {
+    if (!editable) {
+      // Sincroniza com props quando não estiver editando
+      setLocalVideos(videos);
+      setOriginalVideos(videos);
+      setLocalTxt(txt);
+      setLocalTxt2(txt2);
+      setOriginalTxt(txt);
+      setOriginalTxt2(txt2);
+    }
+  }, [videos, txt, txt2, editable]);
 
-  const onDrop = (acceptedFiles) => {
-    const newFiles = acceptedFiles.map((file, index) => ({
-      id: Date.now() + index,
-      name: file.name,
-    }));
-    setVideos((prev) => [...prev, ...newFiles]);
+  // Upload para pasta temp via API
+  const uploadTempVideo = async (file) => {
+    const formData = new FormData();
+    formData.append('video', file);
+
+    try {
+      const res = await fetch("http://localhost/api/upload-temp-video.php", {
+        method: "POST",
+        body: formData,
+      });
+      const data = await res.json();
+      if (data.success) {
+        return data.filename;
+      } else {
+        alert('Falha no upload do vídeo');
+        return null;
+      }
+    } catch (e) {
+      alert('Erro no upload do vídeo');
+      return null;
+    }
   };
 
-  const { getRootProps, getInputProps } = useDropzone({ onDrop });
+  // onDrop recebe arquivos, envia para backend e atualiza estado local
+  const onDrop = async (acceptedFiles) => {
+    if (!editable) return;
 
-  const removeVideo = (id) => {
-    setVideos((prev) => prev.filter((video) => video.id !== id));
+    if (localVideos.length + acceptedFiles.length > 3) {
+      alert('Você só pode adicionar até 3 vídeos.');
+      return;
+    }
+
+    for (const file of acceptedFiles) {
+      const filename = await uploadTempVideo(file);
+      if (filename) {
+        setLocalVideos((prev) => [
+          ...prev,
+          { id: (Date.now() + Math.random()).toString(), name: filename, temp: true }
+        ]);
+      }
+    }
   };
 
-  const handleReorder = (order) => {
-    const newOrder = order.map((id) => videos.find((v) => v.id.toString() === id));
-    setVideos(newOrder);
+  const { getRootProps, getInputProps } = useDropzone({
+    onDrop,
+    accept: { 'video/*': [] },
+    multiple: true,
+    disabled: !editable,
+  });
+
+  const handleRemove = (id) => {
+    if (!editable) return;
+    setLocalVideos((prev) => prev.filter(video => video.id !== id));
+  };
+
+  const moveItem = (id, direction) => {
+    if (!editable) return;
+
+    setLocalVideos((prev) => {
+      const index = prev.findIndex(v => v.id === id);
+      if (index === -1) return prev;
+
+      const newIndex = direction === 'up' ? index - 1 : index + 1;
+      if (newIndex < 0 || newIndex >= prev.length) return prev;
+
+      const newVideos = [...prev];
+      [newVideos[index], newVideos[newIndex]] = [newVideos[newIndex], newVideos[index]];
+
+      return newVideos;
+    });
+  };
+
+  // Salvar alterações: move arquivos temporários para permanentes via API e atualiza estado pai
+  const handleSave = async () => {
+    // Filtra só vídeos temporários
+    const tempVideos = localVideos.filter(v => v.temp).map(v => v.name);
+
+    if (tempVideos.length > 0) {
+      const res = await fetch('/api/move-temp-videos.php', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ videos: tempVideos }),
+      });
+      const data = await res.json();
+      if (!data.success) {
+        alert('Erro ao salvar vídeos');
+        return;
+      }
+    }
+
+    // Atualiza o estado pai e remove flag temp
+    const finalVideos = localVideos.map(v => ({ id: v.id, name: v.name }));
+    setarVideos(finalVideos);
+    setText(localTxt);
+    setText2(localTxt2);
+    setEditable(false);
+  };
+
+  // Cancelar edição: deleta vídeos temporários via API e restaura estado original
+  const cancelEdit = async () => {
+    const tempVideos = localVideos.filter(v => v.temp).map(v => v.name);
+
+    if (tempVideos.length > 0) {
+      await fetch('/api/delete-temp-videos.php', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ videos: tempVideos }),
+      });
+    }
+
+    setLocalVideos(originalVideos);
+    setLocalTxt(originalTxt);
+    setLocalTxt2(originalTxt2);
+    setEditable(false);
+  };
+
+  // Alterna modo edição
+  const toggleEdit = () => {
+    if (editable) {
+      handleSave();
+    } else {
+      // entra modo edição salvando originais
+      setOriginalVideos(localVideos);
+      setOriginalTxt(localTxt);
+      setOriginalTxt2(localTxt2);
+      setEditable(true);
+    }
   };
 
   return (
@@ -38,62 +200,80 @@ const index = ({ txt, txt2, videos, setText, setText2, setarVideos }) => {
       <div className={styles.editorSection}>
         <label className={styles.editorLabel}>Texto 1</label>
         <textarea
-          value={txt}
-          onChange={(e) => setText(e.target.value)}
+          value={localTxt}
+          onChange={(e) => editable && setLocalTxt(e.target.value)}
           className={styles.editorTextarea}
-          rows={6}
+          rows={3}
+          readOnly={!editable}
         />
       </div>
 
       <div className={styles.editorSection}>
         <label className={styles.editorLabel}>Texto 2</label>
         <textarea
-          value={txt2}
-          onChange={(e) => setText2(e.target.value)}
+          value={localTxt2}
+          onChange={(e) => editable && setLocalTxt2(e.target.value)}
           className={styles.editorTextarea}
-          rows={6}
+          rows={3}
+          readOnly={!editable}
         />
       </div>
 
       <div className={styles.dropzoneContainer}>
-
-        {
-          videos.length === 0 ?
-          <div {...getRootProps()} className={styles.dropzone}>
+        {localVideos.length === 0 ? (
+          <div {...getRootProps()} className={`${styles.dropzone} ${!editable ? styles.disabledDropzone : ''}`}>
             <input {...getInputProps()} />
             <p>
-              <span>Fazer upload de até 03 arquivos <FontAwesomeIcon icon={faUpload} className={'fas fa-upload'} /></span> 
-              <br/> 
+              <span>Fazer upload de até 03 arquivos <FontAwesomeIcon icon={faUpload} /></span>
+              <br />
               Ou arraste-os para esta área
             </p>
           </div>
-          :
-          <>  
+        ) : (
+          <>
             <p className={styles.dropzoneInstruction}>
-              A ordem dos arquivos pode ser alterada arrastando e soltando
+              Use os botões para alterar a ordem dos arquivos
             </p>
 
-            <ReactSortable list={videos} setList={setarVideos} animation={150} ghostClass={styles.dragging} className={styles.videoRow}>
-              {videos.map((item) => (
-                <div className={styles.videoItem} key={item.id} data-id={item.id}>
-                  <p className={styles.videoName}>{item.name}</p>
-                  <button className={styles.deleteButton} onClick={() => removeVideo(item.id)}><FontAwesomeIcon icon={faTrash} className={'fas fa-trash'} /></button>
-                </div>
+            <div className={styles.videoRow}>
+              {localVideos.map((video, idx) => (
+                <VideoItem
+                  key={video.id}
+                  id={video.id}
+                  name={video.name}
+                  onRemove={handleRemove}
+                  onMoveUp={() => moveItem(video.id, 'up')}
+                  onMoveDown={() => moveItem(video.id, 'down')}
+                  isFirst={idx === 0}
+                  isLast={idx === localVideos.length - 1}
+                  editable={editable}
+                />
               ))}
-            </ReactSortable>
-
-            <div {...getRootProps()} className={styles.dropzoneSmall}>
-              <input {...getInputProps()} />
-              <p><FontAwesomeIcon icon={faUpload} className={'fas fa-upload'} /></p>
             </div>
-          </>
-        }
 
+            {editable && (
+              <div {...getRootProps()} className={styles.dropzoneSmall}>
+                <input {...getInputProps()} />
+                <p><FontAwesomeIcon icon={faUpload} /></p>
+              </div>
+            )}
+          </>
+        )}
       </div>
 
-      <button className={styles.submitButton}> <FontAwesomeIcon icon={faFloppyDisk} className={'fas fa-floppy-disk'} /> Alterar conteúdo</button>
+      <div className={styles.submitContainer}>
+        <button className={styles.submitButton} onClick={toggleEdit}>
+          <FontAwesomeIcon icon={editable ? faFloppyDisk : faEdit} /> {editable ? 'Salvar conteúdo' : 'Alterar conteúdo'}
+        </button>
+
+        {editable && (
+          <button className={styles.cancelButton} onClick={cancelEdit}>
+            Cancelar
+          </button>
+        )}
+      </div>
     </div>
   );
 };
 
-export default index;
+export default Index;

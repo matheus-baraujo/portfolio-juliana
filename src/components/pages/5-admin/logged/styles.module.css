@@ -20,12 +20,15 @@
   margin: 0%;
 }
 
-.container .logout{
+.container .returnContainer{
   position: absolute;
   top: 0;
   right: 0;
   font-size: 20px;
-  background-color: var(--highlight);
+  
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
 }
 
 .selector{
@@ -40,7 +43,7 @@
   flex-direction: column;
   gap: 10px;
 }
-.selector button, .logout{
+.selector button, .logout, .return{
   padding: 15px;
   color: var(--bg);
   font-size: 24px;
@@ -51,7 +54,11 @@
   border: none;
   transition: ease-in-out .3s;
 }
-.selector button:hover, .container .logout:hover{
+.logout, .return{
+  font-size: 20px;
+  background-color: var(--highlight);
+}
+.selector button:hover, .logout:hover, .return:hover{
   background-color: var(--accent);
 }
 
@@ -77,11 +84,11 @@
   .selector button, .logout{
     font-size: 14px;
   }
-  .selector p, .container .logout{
+  .selector p, .logout, .return{
     font-size: 12px;
   }
 
-  .container .logout{
+  .container .returnContainer{
     right: 20px;
   }
 }

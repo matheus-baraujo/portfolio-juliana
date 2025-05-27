@@ -25,12 +25,15 @@ const index = () => {
     { id: 3, name: "example (1).mp4" },
   ]);
 
+  var title = "Atualize o título e o texto\n da seção de cases\n"
+  var title2 = "“Conheça meu trabalho como Videomaker Mobile”"
+
   return (
     <div className={styles.container}>
       
       <div className={styles.title}>
         <h2>Home</h2>
-        <p>Atualize o título e o texto da seção de cases <span>“Conheça meu trabalho como Videomaker Mobile”</span> </p>
+        <p>{title} <span>{title2}</span></p>
       </div>
 
       <div className={styles.editor}>
