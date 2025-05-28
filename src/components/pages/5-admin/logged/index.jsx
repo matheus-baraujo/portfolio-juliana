@@ -4,6 +4,7 @@ import React, {useState, useEffect} from 'react'
 import styles from './styles.module.css'
 
 import Home from './1 - home'
+import Cases from './2 - cases'
 
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -42,7 +43,7 @@ const index = ({logged, logout}) => {
           selector == 1?
           <Home />
           :
-          <></>
+          <Cases />
 
       }
 

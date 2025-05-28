@@ -15,7 +15,7 @@
   font-weight: 600;
   font-style: italic;
   font-size: 26px;
-  color: var(--text);
+  color: var(--highlight);
 }
 .editorSection {
   display: flex;
@@ -25,7 +25,7 @@
 .editorLabel {
   display: block;
   font-family: var(--font-montserrat);
-  color: var(--text);
+  color: var(--highlight);
   font-size: 24px;
 }
 .editorTextarea {
@@ -42,6 +42,43 @@
 .editorTextarea:focus{
   outline: none;
   background-color: #62733D40;
+}
+
+.editorSpace{
+  padding-right: 35px;
+  border-right: 3px solid var(--highlight);
+}
+.editorHeader{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.editorOrder{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}
+.editorOrder button{
+  background-color: transparent;
+  color: var(--highlight);
+  border: none;
+  transition: ease-in-out .3s;
+  font-size: 18px;
+}
+.editorOrder button:hover{
+  opacity: 0.5;
+}
+.moveButton:disabled, .moveButton:disabled:hover {
+  opacity: 0;
+}
+.editorOrder p{
+  color: var(--highlight);
+  font-family: var(--font-montserrat);
+  font-size: 18px;
 }
 
 
@@ -150,21 +187,15 @@
   color: var(--bg);
 }
 
-.dragging {
-  opacity: 0.5;
-  background: #444;
-}
-
-
 
 .submitContainer{
   display: flex;
-  justify-content: center;
+  justify-content: flex-end;
   gap: 20px;
   margin-top: 20px;
 }
 
-.submitButton, .cancelButton {
+.submitButton, .cancelButton, .removeButton {
   padding: 14px 20px;
   background-color: var(--highlight);
   font-family: var(--font-montserrat);
@@ -174,10 +205,20 @@
   border-radius: 100px;
   transition: ease-in-out .3s;
   width: 275px;
-  margin: 0 auto;
+  margin: 0;
+}
+.submitButton{
+  background-color: #3D5A73;
+}
+.removeButton{
+  background-color: #A66F17;
+  margin: 0 ;
+}
+.removeButton:disabled, .removeButton:disabled:hover {
+  background-color: #9B9B9B;
 }
 
-.submitButton:hover, .cancelButton:hover {
+.submitButton:hover, .cancelButton:hover , .removeButton:hover {
   background-color: var(--accent);
 }
 
@@ -193,6 +234,10 @@
   }
   .editorTextarea{
     font-size: 14px;
+  }
+
+  .editorSpace{
+    padding-right: 30px;
   }
 
   .dropzoneInstruction{
@@ -211,7 +256,12 @@
     font-size: 12px;
   }
 
-  .submitButton, .cancelButton {
+
+  .submitContainer{
+    flex-wrap: wrap;
+  }
+
+  .submitButton, .cancelButton ,.removeButton{
     padding: 14px 20px;
     font-size: 16px;
     border-radius: 100px;

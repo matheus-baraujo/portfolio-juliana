@@ -68,6 +68,7 @@ const Index = () => {
               setSections(copy);
             }}
 
+            home={true}
           />
         ))}
       </div>

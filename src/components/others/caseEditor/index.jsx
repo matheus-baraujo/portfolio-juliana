@@ -5,7 +5,7 @@ import styles from './styles.module.css';
 
 import { useDropzone } from 'react-dropzone';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faFloppyDisk, faUpload, faTrash, faArrowUp, faArrowDown, faEdit, faCancel } from '@fortawesome/free-solid-svg-icons';
+import { faFloppyDisk, faUpload, faTrash, faArrowUp, faArrowDown, faEdit } from '@fortawesome/free-solid-svg-icons';
 
 const VideoItem = ({ id, name, onRemove, onMoveUp, onMoveDown, isFirst, isLast, editable }) => {
 
@@ -58,7 +58,7 @@ const VideoItem = ({ id, name, onRemove, onMoveUp, onMoveDown, isFirst, isLast, 
   );
 };
 
-const Index = ({ number, txt, txt2, videos, setText, setText2, setarVideos }) => {
+const Index = ({ number, txt, txt2, videos, setText, setText2, setarVideos, home, onDelete , onMoveUp, onMoveDown, inFirst, inLast }) => {
   const [editable, setEditable] = useState(false);
   const [localVideos, setLocalVideos] = useState(videos);      // vídeos que o usuário está editando
   const [originalVideos, setOriginalVideos] = useState(videos); // cópia para restaurar se cancelar
@@ -173,7 +173,10 @@ const Index = ({ number, txt, txt2, videos, setText, setText2, setarVideos }) =>
 
     const finalVideos = localVideos.map(v => ({ id: v.id, name: v.name }));
 
-    const res = await fetch(`${process.env.NEXT_PUBLIC_URL}/api/update-case-line.php`, {
+    var url = '';
+    home ?  url = `${process.env.NEXT_PUBLIC_URL}/api/update-case-line.php` : url = `${process.env.NEXT_PUBLIC_URL}/api/update-case.php`;
+
+    const res = await fetch(url, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
@@ -184,7 +187,6 @@ const Index = ({ number, txt, txt2, videos, setText, setText2, setarVideos }) =>
       }),
     });
 
-    
 
     const data = await res.json();
     if (!data.success) {
@@ -231,10 +233,32 @@ const Index = ({ number, txt, txt2, videos, setText, setText2, setarVideos }) =>
 
   return (
     <div className={styles.editorContainer}>
-      <h2 className={styles.editorTitle}>Linha {number}</h2>
+
+      <div  className={styles.editorHeader}>
+        
+        {home? 
+          <h2 className={styles.editorTitle}>Linha {number}</h2>
+          : 
+          <>
+            <div className={styles.editorOrder}>
+              <h2 className={styles.editorTitle +' '+styles.editorSpace }>Case {number}</h2>
+              <button className={styles.moveButton}  onClick={onMoveUp} disabled={inFirst} title="Subir">
+                <FontAwesomeIcon icon={faArrowUp} />
+              </button>
+              <button className={styles.moveButton} onClick={onMoveDown} disabled={inLast} title="Descer">
+                <FontAwesomeIcon icon={faArrowDown} />
+              </button>
+
+              <p>Reordenar</p>
+            </div>
+            
+          </>
+        }
+      </div>
+      
 
       <div className={styles.editorSection}>
-        <label className={styles.editorLabel}>Texto 1</label>
+        <label className={styles.editorLabel}>{home? 'Texto 1' : 'Título'}</label>
         <textarea
           value={localTxt}
           onChange={(e) => editable && setLocalTxt(e.target.value)}
@@ -245,7 +269,7 @@ const Index = ({ number, txt, txt2, videos, setText, setText2, setarVideos }) =>
       </div>
 
       <div className={styles.editorSection}>
-        <label className={styles.editorLabel}>Texto 2</label>
+        <label className={styles.editorLabel}>{home? 'Texto 2' : 'Texto'}</label>
         <textarea
           value={localTxt2}
           onChange={(e) => editable && setLocalTxt2(e.target.value)}
@@ -267,9 +291,13 @@ const Index = ({ number, txt, txt2, videos, setText, setText2, setarVideos }) =>
           </div>
         ) : (
           <>
-            <p className={styles.dropzoneInstruction}>
-              Use os botões para alterar a ordem dos arquivos
-            </p>
+            {
+              editable &&
+                <p className={styles.dropzoneInstruction}>
+                  Use os botões para alterar a ordem dos arquivos
+                </p>
+
+            }
 
             <div className={styles.videoRow}>
               {localVideos.map((video, idx) => (
@@ -297,16 +325,32 @@ const Index = ({ number, txt, txt2, videos, setText, setText2, setarVideos }) =>
         )}
       </div>
 
-      <div className={styles.submitContainer}>
-        <button className={styles.submitButton} onClick={toggleEdit}>
-          <FontAwesomeIcon icon={editable ? faFloppyDisk : faEdit} /> {editable ? 'Salvar conteúdo' : 'Alterar conteúdo'}
-        </button>
+      <div className={editable?  styles.submitContainer +' '+ styles.editableContainer : styles.submitContainer}>
 
-        {editable && (
-          <button className={styles.cancelButton} onClick={cancelEdit}>
-            Cancelar
+          {home?
+            <></>
+            :
+            <button className={styles.removeButton} onClick={() => {
+              if (confirm("Tem certeza que deseja deletar este case?")) {
+                onDelete();
+              }
+            }} disabled={editable}>
+              <FontAwesomeIcon icon={faTrash} /> Remover Case
+            </button>
+            
+          }
+          
+          
+          <button className={styles.submitButton} onClick={toggleEdit}>
+            <FontAwesomeIcon icon={editable ? faFloppyDisk : faEdit} /> {editable ? 'Salvar conteúdo' : 'Alterar conteúdo'}
           </button>
-        )}
+
+          {editable && (
+            <button className={styles.cancelButton} onClick={cancelEdit}>
+              Cancelar
+            </button>
+          )}
+        
       </div>
     </div>
   );
