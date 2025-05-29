@@ -35,8 +35,8 @@ if (!is_array($videos)) {
 try {
     $pdo = new PDO($dsn, $user, $pass, $options);
 
+    // Insere o novo case
     $videosJson = json_encode($videos);
-
     $stmt = $pdo->prepare("INSERT INTO cases (titulo, texto, videos) VALUES (:texto1, :texto2, :videos)");
     $stmt->execute([
         ':texto1' => $texto1,
@@ -44,7 +44,21 @@ try {
         ':videos' => $videosJson
     ]);
 
-    echo json_encode(['success' => true, 'id' => $pdo->lastInsertId()]);
+    $caseId = $pdo->lastInsertId();
+
+    // Define a próxima posição de ordem
+    $stmt = $pdo->query("SELECT MAX(ordem) AS max_ordem FROM cases_ordem");
+    $row = $stmt->fetch();
+    $novaOrdem = ($row && $row['max_ordem'] !== null) ? ((int)$row['max_ordem'] + 1) : 1;
+
+    // Insere o novo case na tabela de ordem
+    $stmt = $pdo->prepare("INSERT INTO cases_ordem (id, ordem) VALUES (:id, :ordem)");
+    $stmt->execute([
+        ':id' => $caseId,
+        ':ordem' => $novaOrdem
+    ]);
+
+    echo json_encode(['success' => true, 'id' => $caseId]);
 
 } catch (\PDOException $e) {
     http_response_code(500);

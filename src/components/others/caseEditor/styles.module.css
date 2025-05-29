@@ -199,6 +199,9 @@
   width: 100%;
   max-width: 200px;
 }
+.moveButtonRotate{
+  transform: rotate(-90deg);
+}
 .deleteButton {
   background: transparent;
   border: none;

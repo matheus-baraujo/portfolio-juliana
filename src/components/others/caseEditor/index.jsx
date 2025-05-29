@@ -5,9 +5,13 @@ import styles from './styles.module.css';
 
 import { useDropzone } from 'react-dropzone';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faFloppyDisk, faUpload, faTrash, faArrowUp, faArrowDown, faEdit, faAngleDown, faAngleUp } from '@fortawesome/free-solid-svg-icons';
+import { faFloppyDisk, faUpload, faTrash, faEdit, faAngleDown, faAngleUp } from '@fortawesome/free-solid-svg-icons';
+
+import { useMediaQuery } from 'react-responsive';
 
 const VideoItem = ({ id, name, onRemove, onMoveUp, onMoveDown, isFirst, isLast, editable }) => {
+
+  const [isClient, setIsClient] = useState(false);
 
   const [useTempPath, setUseTempPath] = useState(false);
 
@@ -23,33 +27,25 @@ const VideoItem = ({ id, name, onRemove, onMoveUp, onMoveDown, isFirst, isLast, 
     }
   };
 
+  useEffect(() => {
+      setIsClient(true);
+  }, []);
+
+  const isMobile = useMediaQuery({ maxWidth: 768 });
+
   return (
     <div className={styles.videoItem}>
       <video src={videoSrc} onError={handleVideoError} />
       <p className={styles.videoName}>{name}</p>
       {editable && (
         <div className={styles.buttonsContainer}>
-          <button 
-            className={styles.moveButton} 
-            onClick={() => onMoveUp(id)} 
-            disabled={isFirst}
-            title="Subir"
-          >
-            <FontAwesomeIcon icon={faArrowUp} />
+          <button className={isMobile ? styles.moveButton : styles.moveButton + ' ' + styles.moveButtonRotate} onClick={() => onMoveUp(id)} disabled={isFirst} title="Subir" >
+            <FontAwesomeIcon icon={faAngleUp} />
           </button>
-          <button 
-            className={styles.moveButton} 
-            onClick={() => onMoveDown(id)} 
-            disabled={isLast}
-            title="Descer"
-          >
-            <FontAwesomeIcon icon={faArrowDown} />
+          <button className={isMobile ? styles.moveButton : styles.moveButton + ' ' + styles.moveButtonRotate} onClick={() => onMoveDown(id)}  disabled={isLast} title="Descer" >
+            <FontAwesomeIcon icon={faAngleDown} />
           </button>
-          <button 
-            className={styles.deleteButton} 
-            onClick={() => onRemove(id)} 
-            title="Remover"
-          >
+          <button className={styles.deleteButton} onClick={() => onRemove(id)} title="Remover" >
             <FontAwesomeIcon icon={faTrash} />
           </button>
         </div>
@@ -369,9 +365,6 @@ const Index = ({ number, txt, txt2, videos, setText, setText2, setarVideos, home
           </>
         }
       </div>
-
-      
-
 
     </div>
   );
