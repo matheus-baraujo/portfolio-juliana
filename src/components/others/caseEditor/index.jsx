@@ -5,7 +5,7 @@ import styles from './styles.module.css';
 
 import { useDropzone } from 'react-dropzone';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faFloppyDisk, faUpload, faTrash, faArrowUp, faArrowDown, faEdit } from '@fortawesome/free-solid-svg-icons';
+import { faFloppyDisk, faUpload, faTrash, faArrowUp, faArrowDown, faEdit, faAngleDown, faAngleUp } from '@fortawesome/free-solid-svg-icons';
 
 const VideoItem = ({ id, name, onRemove, onMoveUp, onMoveDown, isFirst, isLast, editable }) => {
 
@@ -69,6 +69,12 @@ const Index = ({ number, txt, txt2, videos, setText, setText2, setarVideos, home
   const [localTxt2, setLocalTxt2] = useState(txt2);
   const [originalTxt, setOriginalTxt] = useState(txt);
   const [originalTxt2, setOriginalTxt2] = useState(txt2);
+
+  const [collapsed, setCollapsed] = useState(true);
+
+  useEffect(() => {
+    home ? setCollapsed(false) : setCollapsed(true);
+  },[]);
 
   useEffect(() => {
     if (!editable) {
@@ -241,12 +247,15 @@ const Index = ({ number, txt, txt2, videos, setText, setText2, setarVideos, home
           : 
           <>
             <div className={styles.editorOrder}>
-              <h2 className={styles.editorTitle +' '+styles.editorSpace }>Case {number}</h2>
+              <h2 className={styles.editorTitle +' '+styles.editorSpace } onClick={() => setCollapsed(!collapsed)}>
+                Case {number} <br/>
+                <button className={styles.collapseButton}>Detalhes <FontAwesomeIcon icon={ collapsed? faAngleDown : faAngleUp } /></button>
+              </h2>
               <button className={styles.moveButton}  onClick={onMoveUp} disabled={inFirst} title="Subir">
-                <FontAwesomeIcon icon={faArrowUp} />
+                <FontAwesomeIcon icon={faAngleUp} />
               </button>
               <button className={styles.moveButton} onClick={onMoveDown} disabled={inLast} title="Descer">
-                <FontAwesomeIcon icon={faArrowDown} />
+                <FontAwesomeIcon icon={faAngleDown} />
               </button>
 
               <p>Reordenar</p>
@@ -255,103 +264,115 @@ const Index = ({ number, txt, txt2, videos, setText, setText2, setarVideos, home
           </>
         }
       </div>
-      
 
-      <div className={styles.editorSection}>
-        <label className={styles.editorLabel}>{home? 'Texto 1' : 'Título'}</label>
-        <textarea
-          value={localTxt}
-          onChange={(e) => editable && setLocalTxt(e.target.value)}
-          className={styles.editorTextarea}
-          rows={3}
-          readOnly={!editable}
-        />
-      </div>
-
-      <div className={styles.editorSection}>
-        <label className={styles.editorLabel}>{home? 'Texto 2' : 'Texto'}</label>
-        <textarea
-          value={localTxt2}
-          onChange={(e) => editable && setLocalTxt2(e.target.value)}
-          className={styles.editorTextarea}
-          rows={3}
-          readOnly={!editable}
-        />
-      </div>
-
-      <div className={styles.dropzoneContainer}>
-        {localVideos.length === 0 ? (
-          <div {...getRootProps()} className={`${styles.dropzone} ${!editable ? styles.disabledDropzone : ''}`}>
-            <input {...getInputProps()} />
-            <p>
-              <span>Fazer upload de até 03 arquivos <FontAwesomeIcon icon={faUpload} /></span>
-              <br />
-              Ou arraste-os para esta área
-            </p>
-          </div>
-        ) : (
+      <div className={styles.collapsible}>
+        {collapsed ? 
+          <></>
+          : 
           <>
-            {
-              editable &&
-                <p className={styles.dropzoneInstruction}>
-                  Use os botões para alterar a ordem dos arquivos
-                </p>
-
-            }
-
-            <div className={styles.videoRow}>
-              {localVideos.map((video, idx) => (
-                <VideoItem
-                  key={video.id}
-                  id={video.id}
-                  name={video.name}
-                  onRemove={handleRemove}
-                  onMoveUp={() => moveItem(video.id, 'up')}
-                  onMoveDown={() => moveItem(video.id, 'down')}
-                  isFirst={idx === 0}
-                  isLast={idx === localVideos.length - 1}
-                  editable={editable}
-                />
-              ))}
+            <div className={styles.editorSection}>
+              <label className={styles.editorLabel}>{home? 'Texto 1' : 'Título'}</label>
+              <textarea
+                value={localTxt}
+                onChange={(e) => editable && setLocalTxt(e.target.value)}
+                className={styles.editorTextarea}
+                rows={3}
+                readOnly={!editable}
+              />
             </div>
 
-            {editable && (
-              <div {...getRootProps()} className={styles.dropzoneSmall}>
-                <input {...getInputProps()} />
-                <p><FontAwesomeIcon icon={faUpload} /></p>
-              </div>
-            )}
+            <div className={styles.editorSection}>
+              <label className={styles.editorLabel}>{home? 'Texto 2' : 'Texto'}</label>
+              <textarea
+                value={localTxt2}
+                onChange={(e) => editable && setLocalTxt2(e.target.value)}
+                className={styles.editorTextarea}
+                rows={3}
+                readOnly={!editable}
+              />
+            </div>
+
+            <div className={styles.dropzoneContainer}>
+              {localVideos.length === 0 ? (
+                <div {...getRootProps()} className={`${styles.dropzone} ${!editable ? styles.disabledDropzone : ''}`}>
+                  <input {...getInputProps()} />
+                  <p>
+                    <span>Fazer upload de até 03 arquivos <FontAwesomeIcon icon={faUpload} /></span>
+                    <br />
+                    Ou arraste-os para esta área
+                  </p>
+                </div>
+              ) : (
+                <>
+                  {
+                    editable &&
+                      <p className={styles.dropzoneInstruction}>
+                        Use os botões para alterar a ordem dos arquivos
+                      </p>
+
+                  }
+
+                  <div className={styles.videoRow}>
+                    {localVideos.map((video, idx) => (
+                      <VideoItem
+                        key={video.id}
+                        id={video.id}
+                        name={video.name}
+                        onRemove={handleRemove}
+                        onMoveUp={() => moveItem(video.id, 'up')}
+                        onMoveDown={() => moveItem(video.id, 'down')}
+                        isFirst={idx === 0}
+                        isLast={idx === localVideos.length - 1}
+                        editable={editable}
+                      />
+                    ))}
+                  </div>
+
+                  {editable && (
+                    <div {...getRootProps()} className={styles.dropzoneSmall}>
+                      <input {...getInputProps()} />
+                      <p><FontAwesomeIcon icon={faUpload} /></p>
+                    </div>
+                  )}
+                </>
+              )}
+            </div>
+
+            <div className={editable?  styles.submitContainer +' '+ styles.editableContainer : styles.submitContainer}>
+
+                {home?
+                  <></>
+                  :
+                  <button className={styles.removeButton} onClick={() => {
+                    if (confirm("Tem certeza que deseja deletar este case?")) {
+                      onDelete();
+                    }
+                  }} disabled={editable}>
+                    <FontAwesomeIcon icon={faTrash} /> Remover Case
+                  </button>
+                  
+                }
+                
+                
+                <button className={styles.submitButton} onClick={toggleEdit}>
+                  <FontAwesomeIcon icon={editable ? faFloppyDisk : faEdit} /> {editable ? 'Salvar conteúdo' : 'Alterar conteúdo'}
+                </button>
+
+                {editable && (
+                  <button className={styles.cancelButton} onClick={cancelEdit}>
+                    Cancelar
+                  </button>
+                )}
+              
+            </div>
+          
           </>
-        )}
+        }
       </div>
 
-      <div className={editable?  styles.submitContainer +' '+ styles.editableContainer : styles.submitContainer}>
+      
 
-          {home?
-            <></>
-            :
-            <button className={styles.removeButton} onClick={() => {
-              if (confirm("Tem certeza que deseja deletar este case?")) {
-                onDelete();
-              }
-            }} disabled={editable}>
-              <FontAwesomeIcon icon={faTrash} /> Remover Case
-            </button>
-            
-          }
-          
-          
-          <button className={styles.submitButton} onClick={toggleEdit}>
-            <FontAwesomeIcon icon={editable ? faFloppyDisk : faEdit} /> {editable ? 'Salvar conteúdo' : 'Alterar conteúdo'}
-          </button>
 
-          {editable && (
-            <button className={styles.cancelButton} onClick={cancelEdit}>
-              Cancelar
-            </button>
-          )}
-        
-      </div>
     </div>
   );
 };

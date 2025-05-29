@@ -7,7 +7,13 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHouse, faSuitcase } from '@fortawesome/free-solid-svg-icons';
 import CaseEditor from '@/components/others/caseEditor';
 
-const Index = () => {
+
+function topFunction() {
+  document.body.scrollTop = 0; // For Safari
+  document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+}
+
+const Index = ({ addCase }) => {
   const [sections, setSections] = useState([]);
 
   const deleteCase = async (id) => {
@@ -144,7 +150,9 @@ const Index = () => {
         ))}
       </div>
 
-      
+      <button className={styles.addCase} onClick={()=> addCase(3)}>+ Adicionar novo case</button>
+
+      <button className={styles.scrollToTop} onClick={topFunction}>Voltar ao topo</button>
 
     </div>
   )

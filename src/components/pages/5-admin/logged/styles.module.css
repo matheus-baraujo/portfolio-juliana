@@ -22,7 +22,7 @@
 
 .container .returnContainer{
   position: absolute;
-  top: 0;
+  top: -100px;
   right: 0;
   font-size: 20px;
   
@@ -65,7 +65,7 @@
 @media screen and (max-width: 768px) {
 
   .container{
-    padding: 90px 20px;
+    padding: 20px;
     gap: 45px;
   }
 
@@ -90,5 +90,12 @@
 
   .container .returnContainer{
     right: 20px;
+    top: 25px;
+    position: fixed;
+    z-index: 10;
+  }
+
+  .logout, .return{
+    padding: 10px;
   }
 }

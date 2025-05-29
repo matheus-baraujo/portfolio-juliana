@@ -2,7 +2,7 @@
   display: flex;
   flex-direction: column;
   gap: 40px;
-  padding-bottom: 40px;
+
   position: relative;
 }
 
@@ -38,6 +38,7 @@
 }
 
 .addCase{
+  margin: 20px 0px 40px;
   padding: 10px;
   border-radius: 100px;
   border: 1px solid var(--highlight);
@@ -51,23 +52,6 @@
 .addCase:hover{
   border: 1px solid var(--accent);
   background-color: var(--accent);
-  color: var(--bg);
-}
-
-.scrollToTop{
-  width: fit-content;
-  padding: 5px 20px;
-  border: 1px solid var(--highlight);
-  border-radius: 100px;
-  font-family: var(--font-montserrat);
-  font-size: 20px;
-  background-color: var(--bg);
-  color: var(--highlight);
-  transition: ease-in-out 0.3s;
-}
-
-.scrollToTop:hover{
-  background-color: var(--highlight);
   color: var(--bg);
 }
 
@@ -91,7 +75,8 @@
     width: 100%;
   }
 
-  .addCase, .scrollToTop{
+  .addCase{
     font-size: 18px;
+    margin: 0px;
   }
 }

@@ -17,27 +17,7 @@
   font-size: 26px;
   color: var(--highlight);
 }
-.editorTitle .collapseButton{
-  font-size: 14px;
-  padding: 2px 5px;
-  border-radius: 100px;
-  background-color: var(--bg);
-  border: 1px solid var(--highlight);
-  transition: ease-in-out .3s;
-  font-family: var(--font-montserrat);
-}
-.editorTitle:hover .collapseButton {
-  color: var(--bg);
-  background-color: var(--highlight);
-  border: 1px solid var(--highlight);
-  opacity: 1;
-}
 
-.collapsible{
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
 
 .editorSection {
   display: flex;
@@ -66,42 +46,6 @@
   background-color: #62733D40;
 }
 
-.editorSpace{
-  padding-right: 35px;
-  border-right: 3px solid var(--highlight);
-}
-.editorHeader{
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-}
-.editorOrder{
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  gap: 10px;
-}
-.editorOrder button{
-  background-color: transparent;
-  color: var(--highlight);
-  border: none;
-  transition: ease-in-out .3s;
-  font-size: 18px;
-}
-.editorOrder button:hover{
-  opacity: 0.5;
-}
-.moveButton:disabled, .moveButton:disabled:hover {
-  opacity: 0;
-}
-.editorOrder p{
-  color: var(--highlight);
-  font-family: var(--font-montserrat);
-  font-size: 18px;
-}
 
 
 .dropzoneContainer {
@@ -218,7 +162,7 @@
   margin-top: 20px;
 }
 
-.submitButton, .cancelButton, .removeButton {
+.submitButton, .cancelButton{
   padding: 14px 20px;
   background-color: var(--highlight);
   font-family: var(--font-montserrat);
@@ -233,15 +177,8 @@
 .submitButton{
   background-color: #3D5A73;
 }
-.removeButton{
-  background-color: #A66F17;
-  margin: 0 ;
-}
-.removeButton:disabled, .removeButton:disabled:hover {
-  background-color: #9B9B9B;
-}
 
-.submitButton:hover, .cancelButton:hover , .removeButton:hover {
+.submitButton:hover, .cancelButton:hover {
   background-color: var(--accent);
 }
 
@@ -252,24 +189,12 @@
   .editorTitle {
     font-size: 18px;
   }
-  .editorTitle .collapseButton{
-    font-size: 10px;
-  }
   .editorLabel {
     font-size: 16px;
   }
   .editorTextarea{
     font-size: 14px;
   }
-
-  .editorSpace{
-    padding-right: 20px;
-  }
-
-  .collapsible{
-    gap: 10px;
-  }
-
 
   .dropzoneInstruction{
     font-size: 12px;
@@ -295,7 +220,7 @@
     flex-wrap: wrap;
   }
 
-  .submitButton, .cancelButton ,.removeButton{
+  .submitButton, .cancelButton{
     padding: 14px 20px;
     font-size: 16px;
     border-radius: 100px;

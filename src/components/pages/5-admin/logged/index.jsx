@@ -5,6 +5,7 @@ import styles from './styles.module.css'
 
 import Home from './1 - home'
 import Cases from './2 - cases'
+import AddCases from './3 - addCase'
 
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -12,7 +13,7 @@ import { faHouse, faSuitcase } from '@fortawesome/free-solid-svg-icons';
 
 const index = ({logged, logout}) => {
 
-  // 0 home - 1 home content - 2 cases content
+  // 0 home - 1 home content - 2 cases content - 3 add case
   const [selector, setSelector] = useState(0);
 
   return (
@@ -41,19 +42,19 @@ const index = ({logged, logout}) => {
         </>
         :
           selector == 1?
-          <Home />
-          :
-          <Cases />
+            <Home />
+          :selector == 2?
+            <Cases addCase={setSelector}/>
+          :<AddCases onReturn={setSelector}/>
 
       }
-
 
       
       <div className={styles.returnContainer}>
 
         {
           selector != 0 ?
-          <button className={styles.return} onClick={() => setSelector(0)}>Voltar</button>
+          <button className={styles.return} onClick={() => selector==3 ? setSelector(2) : setSelector(0)}>Voltar</button>
           :
           <></>
         }
