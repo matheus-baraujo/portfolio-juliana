@@ -5,9 +5,11 @@ import styles from './styles.module.css';
 
 import { useDropzone } from 'react-dropzone';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faFloppyDisk, faUpload, faTrash,faAngleDown, faAngleUp } from '@fortawesome/free-solid-svg-icons';
+import { faFloppyDisk, faUpload, faTrash,faAngleDown, faAngleUp, faCheckCircle, faXmarkCircle } from '@fortawesome/free-solid-svg-icons';
 
 import { useMediaQuery } from 'react-responsive';
+
+import { toast } from 'react-toastify';
 
 const VideoItem = ({ id, name, onRemove, onMoveUp, onMoveDown, isFirst, isLast }) => {
 
@@ -52,6 +54,40 @@ const Index = ({onReturn}) => {
   const [localVideos, setLocalVideos] = useState([]);
   const [localTxt, setLocalTxt] = useState('');
   const [localTxt2, setLocalTxt2] = useState('');
+
+
+  // Exibe toast de confirmação após adcicionar um case
+  const showResult = (sucesso) => {
+    if (sucesso) {
+      toast(
+        <div className={styles.toastSuccess}>
+          
+          <p><FontAwesomeIcon icon={faCheckCircle} /> Case adicionado com sucesso!</p>
+        </div>, {
+          position: "bottom-center",
+          autoClose: 3000,
+          hideProgressBar: true,
+          closeOnClick: true,
+          progress: undefined,
+          theme: "dark",
+          style: { backgroundColor: 'var(--accent)'},
+        });
+    } else {
+      toast(
+        <div className={styles.toastFailure}>
+          <p><FontAwesomeIcon icon={faXmarkCircle} /> Erro ao adicionar o case!</p>
+        </div>, {
+        position: "bottom-center",
+        autoClose: 3000,
+        hideProgressBar: true,
+        closeOnClick: true,
+        progress: undefined,
+        theme: "dark",
+        style: { backgroundColor: 'var(--highlight)'},
+      });
+    }
+  }
+
 
   // Upload para pasta temp via API
   const uploadTempVideo = async (file) => {
@@ -121,7 +157,8 @@ const Index = ({onReturn}) => {
       });
       const data = await res.json();
       if (!data.success) {
-        alert('Erro ao salvar vídeos');
+        // alert('Erro ao salvar vídeos');
+        showResult(false);
         return;
       }
 
@@ -138,6 +175,9 @@ const Index = ({onReturn}) => {
       setLocalVideos([]);
       setLocalTxt('');
       setLocalTxt2('');
+
+      showResult(true);
+
       onReturn(2); // Volta para a página de cases
     }
 

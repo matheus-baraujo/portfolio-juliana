@@ -185,6 +185,24 @@
   background-color: var(--accent);
 }
 
+
+
+.toastSuccess, .toastFailure{
+  width: 100%;
+  text-align: center;
+  font-family: var(--font-montserrat);
+  font-size: 25px;
+}
+.toastSuccess{
+  background-color: var(--accent);
+  color: var(--bg);
+}
+.toastFailure{
+  background-color: var(--bg);
+  color: var(--highlight);
+}
+
+
 @media screen and (max-width: 768px) {
   .editorContainer{
 

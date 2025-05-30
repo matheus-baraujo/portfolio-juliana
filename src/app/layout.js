@@ -16,11 +16,13 @@ const blackMango = localFont({
   variable: '--font-black-mango',
 });
 
-
 const montserrat = Montserrat({
   variable: "--font-montserrat",
   subsets: ["latin"],
 });
+
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export const metadata = {
   title: "Soul Juliana",
@@ -31,11 +33,14 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={`${montserrat.variable} ${blackMango.variable}`}>
+        
         <Navbar footer={false}/>
 
         {children}
 
         <Footer/>
+        
+        <ToastContainer />
       </body>
     </html>
   );

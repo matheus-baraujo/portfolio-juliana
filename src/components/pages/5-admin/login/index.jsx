@@ -7,10 +7,44 @@ import styles from './styles.module.css'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser, faLock, faEyeSlash, faEye } from '@fortawesome/free-solid-svg-icons';
 
+import { toast } from 'react-toastify';
+
 
 const index = ({login}) => {
 
   const [show, setShow] = useState(false);
+
+
+  const forgotPass = () => {
+      toast(
+        <div className={styles.toastInfo}>
+          <p>Erro ao editar o case!</p>
+        </div>, {
+        position: "bottom-center",
+        autoClose: 3000,
+        hideProgressBar: true,
+        closeOnClick: true,
+        progress: undefined,
+        theme: "dark",
+        style: { backgroundColor: 'var(--highlight)'},
+      });
+  }
+
+  // Exibe toast
+  const showErroLogin = () => {
+    toast(
+      <div className={styles.toastFailure}>
+        <p><FontAwesomeIcon icon={faXmarkCircle} /> Credenciais Incorretas!</p>
+      </div>, {
+      position: "bottom-center",
+      autoClose: 3000,
+      hideProgressBar: true,
+      closeOnClick: true,
+      progress: undefined,
+      theme: "dark",
+      style: { backgroundColor: 'var(--highlight)'},
+    });
+  }
 
 
   return (
@@ -29,10 +63,10 @@ const index = ({login}) => {
         </div>
         
         <div className={styles.input}>
-          <label htmlFor="email">Email</label>
+          <label htmlFor="login">Email</label>
 
           <div className={styles.inputWrapper}>
-            <input type="email" id="email" placeholder="seuemail@exemplo.com" required/>
+            <input type="text" id="login" placeholder="Usuário" required/>
             <FontAwesomeIcon icon={faUser} className={'fas fa-user '+ styles.inputIcon} />
           </div>
           

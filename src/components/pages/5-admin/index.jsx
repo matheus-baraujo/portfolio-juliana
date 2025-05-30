@@ -8,7 +8,7 @@ import Logged from './logged'
 
 const index = () => {
 
-  const [logged, setLogged] = useState(true);
+  const [logged, setLogged] = useState(false);
 
   return (
     <div className={styles.container}>

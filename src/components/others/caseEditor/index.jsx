@@ -5,9 +5,11 @@ import styles from './styles.module.css';
 
 import { useDropzone } from 'react-dropzone';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faFloppyDisk, faUpload, faTrash, faEdit, faAngleDown, faAngleUp } from '@fortawesome/free-solid-svg-icons';
+import { faFloppyDisk, faUpload, faTrash, faEdit, faAngleDown, faAngleUp, faCheckCircle , faXmarkCircle} from '@fortawesome/free-solid-svg-icons';
 
 import { useMediaQuery } from 'react-responsive';
+
+import { toast } from 'react-toastify';
 
 const VideoItem = ({ id, name, onRemove, onMoveUp, onMoveDown, isFirst, isLast, editable }) => {
 
@@ -83,6 +85,40 @@ const Index = ({ number, txt, txt2, videos, setText, setText2, setarVideos, home
       setOriginalTxt2(txt2);
     }
   }, [videos, txt, txt2, editable]);
+
+
+  // Exibe toast de confirmação após editar um case
+  const showResult = (sucesso) => {
+    if (sucesso) {
+      toast(
+        <div className={styles.toastSuccess}>
+          
+          <p><FontAwesomeIcon icon={faCheckCircle} /> Case editado com sucesso!</p>
+        </div>, {
+          position: "bottom-center",
+          autoClose: 3000,
+          hideProgressBar: true,
+          closeOnClick: true,
+          progress: undefined,
+          theme: "dark",
+          style: { backgroundColor: 'var(--accent)'},
+        });
+    } else {
+      toast(
+        <div className={styles.toastFailure}>
+          <p><FontAwesomeIcon icon={faXmarkCircle} /> Erro ao editar o case!</p>
+        </div>, {
+        position: "bottom-center",
+        autoClose: 3000,
+        hideProgressBar: true,
+        closeOnClick: true,
+        progress: undefined,
+        theme: "dark",
+        style: { backgroundColor: 'var(--highlight)'},
+      });
+    }
+  }
+
 
   // Upload para pasta temp via API
   const uploadTempVideo = async (file) => {
@@ -168,7 +204,8 @@ const Index = ({ number, txt, txt2, videos, setText, setText2, setarVideos, home
       });
       const data = await res.json();
       if (!data.success) {
-        alert('Erro ao salvar vídeos');
+        // alert('Erro ao salvar vídeos');
+        showResult(false);
         return;
       }
     }
@@ -192,7 +229,8 @@ const Index = ({ number, txt, txt2, videos, setText, setText2, setarVideos, home
 
     const data = await res.json();
     if (!data.success) {
-      alert('Erro ao atualizar banco de dados');
+      // alert('Erro ao atualizar banco de dados');
+      showResult(false);
       return;
     }
 
@@ -200,6 +238,8 @@ const Index = ({ number, txt, txt2, videos, setText, setText2, setarVideos, home
     setText(localTxt);
     setText2(localTxt2);
     setEditable(false);
+
+    showResult(true);
   };
 
   // Cancelar edição: deleta vídeos temporários via API e restaura estado original
@@ -232,6 +272,26 @@ const Index = ({ number, txt, txt2, videos, setText, setText2, setarVideos, home
       setEditable(true);
     }
   };
+
+  // Toast - Confirmação de exclusão
+  const confirmDelete = (number) => {
+    toast(() => (
+        <div className={styles.toastDelete}>
+          <p>Tem certeza que deseja deletar o <br/> <strong>Case {number}?</strong></p>
+          <div className={styles.toastButtons}>
+            <button className={`${styles.toastButton} ${styles.toastDeleteButton}`} onClick={() => { onDelete(); toast.dismiss(); }} >
+              Sim
+            </button>
+            <button className={styles.toastButton} onClick={() => toast.dismiss()} >
+              Cancelar
+            </button>
+          </div>
+        </div>
+      ),
+      { autoClose: false , position: "bottom-center", theme: "dark", closeButton: false, style: { backgroundColor: 'var(--highlight)'} }
+    );
+  };
+
 
   return (
     <div className={styles.editorContainer}>
@@ -340,9 +400,7 @@ const Index = ({ number, txt, txt2, videos, setText, setText2, setarVideos, home
                   <></>
                   :
                   <button className={styles.removeButton} onClick={() => {
-                    if (confirm("Tem certeza que deseja deletar este case?")) {
-                      onDelete();
-                    }
+                    confirmDelete(number);
                   }} disabled={editable}>
                     <FontAwesomeIcon icon={faTrash} /> Remover Case
                   </button>

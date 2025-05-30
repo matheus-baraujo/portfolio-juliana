@@ -248,6 +248,48 @@
   background-color: var(--accent);
 }
 
+
+.toastSuccess, .toastFailure, .toastDelete{
+  width: 100%;
+  text-align: center;
+  font-family: var(--font-montserrat);
+  font-size: 25px;
+}
+.toastSuccess{
+  background-color: var(--accent);
+  color: var(--bg);
+}
+.toastFailure{
+  background-color: var(--bg);
+  color: var(--highlight);
+}
+.toastDelete p{
+  color: var(--bg);
+}
+.toastButtons{
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+.toastButton{
+  width: 100px;
+  padding: 5px 10px;
+  color: var(--highlight);
+  background-color: var(--bg);
+  border: none;
+  border-radius: 100px;
+  transition: ease-in-out .3s;
+  font-family: var(--font-montserrat);
+  font-size: 16px;
+}
+.toastDeleteButton{
+  background-color: var(--text);
+  color: var(--bg);
+}
+.toastButton:hover{
+  opacity: 0.6;
+}
+
 @media screen and (max-width: 768px) {
   .editorContainer{
 
