@@ -95,13 +95,13 @@ const Index = ({ number, txt, txt2, videos, setText, setText2, setarVideos, home
           
           <p><FontAwesomeIcon icon={faCheckCircle} /> Case editado com sucesso!</p>
         </div>, {
-          position: "bottom-center",
+          position: "top-center",
           autoClose: 3000,
           hideProgressBar: true,
           closeOnClick: true,
           progress: undefined,
           theme: "dark",
-          style: { backgroundColor: 'var(--accent)'},
+          style: { backgroundColor: 'var(--accent)', marginTop: '40vh', width: '90%', maxWidth: '400px', borderRadius: '8px'},
         });
     } else {
       toast(
@@ -114,7 +114,7 @@ const Index = ({ number, txt, txt2, videos, setText, setText2, setarVideos, home
         closeOnClick: true,
         progress: undefined,
         theme: "dark",
-        style: { backgroundColor: 'var(--highlight)'},
+        style: { backgroundColor: 'var(--highlight)' , marginTop: '40vh', width: '90%', maxWidth: '400px', borderRadius: '8px'},
       });
     }
   }

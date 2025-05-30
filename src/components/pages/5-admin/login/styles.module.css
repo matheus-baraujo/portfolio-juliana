@@ -155,6 +155,22 @@
 }
 
 
+.toastInfo{
+  font-family: var(--font-montserrat);
+  font-size: 20px;
+  width: 100%;
+  text-align: center;
+}
+
+.toastFailure{
+  font-family: var(--font-montserrat);
+  font-size: 20px;
+  width: 100%;
+  text-align: center;
+  color: var(--bg);
+  background-color: var(--highlight);
+}
+
 @media screen and (max-width: 768px) {
 
   .containerLogin{

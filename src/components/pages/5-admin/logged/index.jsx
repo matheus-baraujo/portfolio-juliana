@@ -59,7 +59,7 @@ const index = ({logged, logout}) => {
           <></>
         }
         
-        <button className={styles.logout}>Logout</button>
+        <button className={styles.logout} onClick={() => logout(false)}>Logout</button>
       </div>
 
     </div>
